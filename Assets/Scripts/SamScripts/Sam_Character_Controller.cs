@@ -115,7 +115,19 @@ public class Sam_Character_Controller : MonoBehaviour
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
-            }            
+            }     
+            else
+            {
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
+                selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
+                selectedChar.heldObject = null;
+                selectedChar.isactive = false;
+                selectedChar = bigRed.GetComponent<Sam_Character>();
+                followCam.LookAt = selectedChar.transform;
+                followCam.Follow = selectedChar.transform;
+                selectedChar.isactive = true;
+            }
         }
         else
         {
@@ -127,7 +139,19 @@ public class Sam_Character_Controller : MonoBehaviour
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
             }
-           
+            else
+            {
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
+                selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
+                selectedChar.heldObject = null;
+                selectedChar.isactive = false;
+                selectedChar = bigBlue.GetComponent<Sam_Character>();
+                followCam.LookAt = selectedChar.transform;
+                followCam.Follow = selectedChar.transform;
+                selectedChar.isactive = true;
+            }
+
 
         }
     }
