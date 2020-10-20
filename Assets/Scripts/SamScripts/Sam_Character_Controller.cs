@@ -21,7 +21,6 @@ public class Sam_Character_Controller : MonoBehaviour
     {
         selectedChar = bigBlue.GetComponent<Sam_Character>();
         selectedChar.isactive = true;
-        selectedChar.highlight.SetActive(true);
         followCam.LookAt = selectedChar.transform;
         followCam.Follow = selectedChar.transform;
 
@@ -30,7 +29,7 @@ public class Sam_Character_Controller : MonoBehaviour
     void FixedUpdate()
     {
         characterGrounded = Physics2D.OverlapCircle(selectedChar.groundCheck.position, groundRadius, whatisGround);
-        if (characterGrounded || selectedChar.isSwinging)
+        if (characterGrounded)
         {
             selectedChar.hasDoubleJump = true;
         }
@@ -43,37 +42,9 @@ public class Sam_Character_Controller : MonoBehaviour
         {
             facingDirection = -1;
         }
-        if (selectedChar.dashTime <= 0 && !selectedChar.isSwinging)
+        if (selectedChar.dashTime <= 0)
         {
             selectedChar._rb.velocity = new Vector2(moveInputX * selectedChar.speed, selectedChar._rb.velocity.y);
-        }
-        if(selectedChar.isSwinging)
-        {
-            {
-                Vector2 swingPoint = selectedChar.swingPoint.transform.position;
-                
-
-                // 1 - Get a normalized direction vector from the player to the hook point
-                var playerToHookDirection = (swingPoint - (Vector2)selectedChar.transform.position).normalized;
-
-                // 2 - Inverse the direction to get a perpendicular direction
-                Vector2 perpendicularDirection;
-                if (moveInputX < 0)
-                {
-                    perpendicularDirection = new Vector2(-playerToHookDirection.y, playerToHookDirection.x);
-                    var leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
-                    Debug.DrawLine(transform.position, leftPerpPos, Color.green, 0f);
-                }
-                else
-                {
-                    perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);
-                    var rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
-                    Debug.DrawLine(transform.position, rightPerpPos, Color.green, 0f);
-                }
-
-                var force = perpendicularDirection * selectedChar.speed;
-                selectedChar._rb.AddForce(force, ForceMode2D.Force);
-            }
         }
     }
 
@@ -84,11 +55,6 @@ public class Sam_Character_Controller : MonoBehaviour
         {
             swapCharacter();
         }
-        if(Input.GetButtonDown("Jump") && selectedChar.isSwinging)
-            {
-                selectedChar.swingPoint.connectedBody = null;
-                selectedChar.isSwinging = false;
-            }
         if (Input.GetButtonDown("Jump") && characterGrounded)
         {
             selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
@@ -103,17 +69,12 @@ public class Sam_Character_Controller : MonoBehaviour
             if (selectedChar.dashCooler <= 0)
             {
 
-                selectedChar._rb.velocity = new Vector2(facingDirection * selectedChar.dashSpeed, Input.GetAxis("Horizontal") * selectedChar.dashSpeed);
+                selectedChar._rb.velocity = new Vector2(facingDirection * selectedChar.dashSpeed, selectedChar._rb.velocity.y);
                 selectedChar.dashTime = selectedChar.dashLength;
             }
         }
         if (Input.GetButtonDown("Grab/Throw"))
         {
-            if(selectedChar.isSwinging)
-            {
-                selectedChar.swingPoint.connectedBody = null;
-                selectedChar.isSwinging = false;
-            }
             if (selectedChar.heldObject == null)
             {
                 GameObject throwablePlayer = null;
@@ -130,10 +91,6 @@ public class Sam_Character_Controller : MonoBehaviour
                     throwablePlayer.transform.position = selectedChar.throwpoint.position;
                     selectedChar.heldObject = throwablePlayer;
                     throwablePlayer.GetComponent<Sam_Character>().isHeld = true;
-                }
-                if(throwablePlayer = null)
-                {
-
                 }
             }
             else
@@ -155,17 +112,11 @@ public class Sam_Character_Controller : MonoBehaviour
             if (!bigRed.isHeld)
             {               
                 selectedChar.isactive = false;
-                selectedChar.highlight.SetActive(false);
                 selectedChar = bigRed.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
-<<<<<<< Updated upstream
             }
-=======
-                selectedChar.highlight.SetActive(true);
-            }     
->>>>>>> Stashed changes
             else
             {
                 selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
@@ -173,13 +124,11 @@ public class Sam_Character_Controller : MonoBehaviour
                 selectedChar.heldObject.GetComponent<Sam_Character>().hasDoubleJump = true;
                 selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
                 selectedChar.heldObject = null;
-                selectedChar.highlight.SetActive(false);
                 selectedChar.isactive = false;
                 selectedChar = bigRed.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
-                selectedChar.highlight.SetActive(true);
             }
         }
         else
@@ -187,12 +136,10 @@ public class Sam_Character_Controller : MonoBehaviour
             if (!bigBlue.isHeld)
             {
                 selectedChar.isactive = false;
-                selectedChar.highlight.SetActive(false);
                 selectedChar = bigBlue.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
-                selectedChar.highlight.SetActive(true);
             }
             else
             {
@@ -202,18 +149,14 @@ public class Sam_Character_Controller : MonoBehaviour
                 selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
                 selectedChar.heldObject = null;
                 selectedChar.isactive = false;
-                selectedChar.highlight.SetActive(false);
                 selectedChar = bigBlue.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
-                selectedChar.highlight.SetActive(true);
             }
            
 
         }
     }
-
-    
 }
 

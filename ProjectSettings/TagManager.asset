@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Swingable
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -14,15 +13,9 @@ TagManager:
   - UI
   - 
   - 
-<<<<<<< Updated upstream
   - 
   - 
   - 
-=======
-  - Ground
-  - Player
-  - Swingable
->>>>>>> Stashed changes
   - 
   - 
   - 
