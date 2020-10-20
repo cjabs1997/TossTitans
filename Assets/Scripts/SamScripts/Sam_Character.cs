@@ -19,6 +19,11 @@ public class Sam_Character : MonoBehaviour
     public bool isactive;
     public bool isHeld;
 
+    public GameObject highlightParticle;
+
+    public Sam_Rope swing;
+    public bool isSwinging;
+
     public GameObject heldObject;
 
     public Rigidbody2D _rb;
@@ -39,6 +44,7 @@ public class Sam_Character : MonoBehaviour
         if(dashTime > 0)
         {
             dashTime -= Time.deltaTime;
+            speed = dashSpeed;
             _rb.gravityScale = 0;
 
         }
@@ -56,5 +62,16 @@ public class Sam_Character : MonoBehaviour
             dashCooler -= Time.deltaTime;
         }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Swingable")
+        {
+            other.GetComponent<DistanceJoint2D>().connectedBody = _rb;
+            swing = other.GetComponent<Sam_Rope>();
+            other.GetComponent<Sam_Rope>().inUse = true;
+            isSwinging = true;
+        }
+    }
+
 }
