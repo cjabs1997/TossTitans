@@ -60,6 +60,7 @@ public class Sam_Character : MonoBehaviour
     {
         if(other.tag == "Swingable" && !isSwinging)
         {
+            hasDoubleJump = true;
             transform.position = other.GetComponent<DistanceJoint2D>().connectedAnchor;
             other.GetComponent<DistanceJoint2D>().connectedBody = _rb;
             swing = other.GetComponent<Sam_Rope>();

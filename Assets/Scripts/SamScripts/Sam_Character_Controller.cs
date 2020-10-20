@@ -108,6 +108,7 @@ public class Sam_Character_Controller : MonoBehaviour
             selectedChar.swing._dj.connectedBody = null;
             selectedChar.swing.inUse = false;
             selectedChar.swing = null;
+            
         }
         if (Input.GetButtonDown("Jump") && characterGrounded)
         {
@@ -115,7 +116,7 @@ public class Sam_Character_Controller : MonoBehaviour
             selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
             characterGrounded = false;
         }
-        if (Input.GetButtonDown("Jump") && !characterGrounded && selectedChar.hasDoubleJump)
+        if (Input.GetButtonDown("Jump") && !characterGrounded && selectedChar.hasDoubleJump && !selectedChar.isSwinging)
         {
             selectedChar._rb.velocity = new Vector2(selectedChar._rb.velocity.x, 0);
             selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
