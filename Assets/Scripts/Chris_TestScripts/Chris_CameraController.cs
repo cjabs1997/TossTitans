@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Sam's implementation of this via Cinemachine is much better. Used for personal testing only...
+/// </summary>
 public class Chris_CameraController : MonoBehaviour
 {
     public Target target;
@@ -17,10 +21,10 @@ public class Chris_CameraController : MonoBehaviour
     private void Update()
     {
         this.transform.position = new Vector3(targets[(int)target].position.x, targets[(int)target].position.y + yOffset, this.transform.position.z);
+    }
 
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            target = (Target) (((int)target + 1) % 2);
-        }
+    public void SwapTarget()
+    {
+        target = (Target)(((int)target + 1) % 2);
     }
 }

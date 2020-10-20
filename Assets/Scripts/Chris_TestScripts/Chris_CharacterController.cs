@@ -5,7 +5,11 @@ using UnityEngine;
 public class Chris_CharacterController : MonoBehaviour
 {
     [Header("Stats")]
+    [Tooltip("How fast the object should travel.")]
+    [Range(0f, 15f)]
     [SerializeField] private float moveSpeed = 0f;
+
+    [Range(0f, 50f)]
     [SerializeField] private float jumpForce = 0f;
 
     [Header("Misc")]
@@ -21,6 +25,11 @@ public class Chris_CharacterController : MonoBehaviour
 
     private void Update()
     {
+        // This is not ideal, still running a check every frame for no reason.
+        // Will think of ways to prevent this.
+        if (!selected)
+            return;
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             m_Rigidbody2D.AddForce(Vector2.up * jumpForce);
@@ -29,6 +38,11 @@ public class Chris_CharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // This is not ideal, still running a check every fixed frame for no reason.
+        // Will think of ways to prevent this.
+        if (!selected)
+            return;
+
         float direction = Input.GetAxisRaw("Horizontal");
 
         float jerk = moveSpeed * direction;
@@ -40,6 +54,8 @@ public class Chris_CharacterController : MonoBehaviour
 
     public void SwapSelected()
     {
+        this.enabled = !this.enabled;
         selected = !selected;
+        m_Rigidbody2D.simulated = !m_Rigidbody2D.simulated;
     }
 }
