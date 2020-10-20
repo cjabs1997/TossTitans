@@ -365,6 +365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a83dd27ad774640b17e52a3295947c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingCharacter: 0
+  fireFella: {fileID: 1731490693}
+  iceFella: {fileID: 668204960}
+  camera: {fileID: 1868037782}
   swapKey: 113
   swapEvent: {fileID: 11400000, guid: 38ced645c29bb3d45943edc6bcaf7dd6, type: 2}
 --- !u!4 &400146285
@@ -430,7 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
   jumpForce: 1750
-  selected: 1
+  selected: 0
 --- !u!50 &668204963
 Rigidbody2D:
   serializedVersion: 4
@@ -920,7 +924,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731490693}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c757e4d18a58bd04db6b5427813d7208, type: 3}
   m_Name: 
@@ -937,7 +941,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731490693}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1.2
@@ -1075,8 +1079,8 @@ MonoBehaviour:
   target: 0
   yOffset: 3.25
   targets:
-  - {fileID: 668204961}
   - {fileID: 1731490694}
+  - {fileID: 668204961}
 --- !u!114 &1868037787
 MonoBehaviour:
   m_ObjectHideFlags: 0

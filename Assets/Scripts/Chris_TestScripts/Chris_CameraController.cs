@@ -27,4 +27,9 @@ public class Chris_CameraController : MonoBehaviour
     {
         target = (Target)(((int)target + 1) % 2);
     }
+
+    public void SetTarget(int target)
+    {
+        this.target = (Target)target;
+    }
 }

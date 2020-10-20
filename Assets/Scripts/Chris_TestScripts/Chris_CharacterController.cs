@@ -9,6 +9,7 @@ public class Chris_CharacterController : MonoBehaviour
     [Range(0f, 15f)]
     [SerializeField] private float moveSpeed = 0f;
 
+    // Having big values in the Inspector seems off putting, will probably need to multiply it in code rather than inspector. Makes it look less daunting.
     [Range(0f, 50f)]
     [SerializeField] private float jumpForce = 0f;
 
@@ -57,5 +58,14 @@ public class Chris_CharacterController : MonoBehaviour
         this.enabled = !this.enabled;
         selected = !selected;
         m_Rigidbody2D.simulated = !m_Rigidbody2D.simulated;
+    }
+
+    /// <summary>
+    /// Manually set selected, won't need to worry about talking to changing each character.
+    /// </summary>
+    /// <param name="selected"></param>
+    public void SetSelected(bool selected)
+    {
+        this.enabled = this.selected = m_Rigidbody2D.simulated = selected;
     }
 }
