@@ -11,7 +11,7 @@ public class Sam_Character_Controller : MonoBehaviour
     public Sam_Character bigBlue;
     public Sam_Character selectedChar;
     public float facingDirection;
-
+    public float lerpValue;
     public float maxVelocityX;
 
     public bool characterGrounded;
@@ -44,7 +44,7 @@ public class Sam_Character_Controller : MonoBehaviour
         {
             selectedChar.hasDoubleJump = true;
         }
-        float moveInputX = Input.GetAxis("Horizontal");
+        float moveInputX = Input.GetAxisRaw("Horizontal");
         Debug.Log(moveInputX);
         if (moveInputX > 0)
         {
@@ -63,14 +63,14 @@ public class Sam_Character_Controller : MonoBehaviour
             }
             else if (characterGrounded)
             {
-                selectedChar._rb.velocity = new Vector2(facingDirection * maxVelocityX, selectedChar._rb.velocity.y);
+                selectedChar._rb.velocity = new Vector2(moveInputX * maxVelocityX, selectedChar._rb.velocity.y);
             }
         }
 
         if (moveInputX == 0 && selectedChar._rb.velocity.y <= 0.1f && characterGrounded)
         {
 
-            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, 1f), 0);
+            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, lerpValue), 0);
         }   
 
         if (selectedChar.isSwinging)

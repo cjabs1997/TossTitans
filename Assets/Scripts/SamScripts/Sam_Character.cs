@@ -18,7 +18,7 @@ public class Sam_Character : MonoBehaviour
     public float dashCooldown;
     public bool isactive;
     public bool isHeld;
-
+    private float lerpValue;
     public GameObject highlightParticle;
 
     public Sam_Rope swing;

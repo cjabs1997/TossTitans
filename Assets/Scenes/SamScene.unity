@@ -27191,6 +27191,7 @@ MonoBehaviour:
   bigBlue: {fileID: 638822821}
   selectedChar: {fileID: 0}
   facingDirection: 0
+  lerpValue: 2
   maxVelocityX: 15
   characterGrounded: 0
   whatisGround:
