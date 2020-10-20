@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Sam_Character_Controller : MonoBehaviour
 {
+    public static Sam_Character_Controller instance;
+
     public Sam_Character bigRed;
     public Sam_Character bigBlue;
     public Sam_Character selectedChar;
@@ -19,6 +21,11 @@ public class Sam_Character_Controller : MonoBehaviour
 
     public CinemachineVirtualCamera followCam;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         selectedChar = bigBlue.GetComponent<Sam_Character>();
@@ -31,7 +38,7 @@ public class Sam_Character_Controller : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        
         characterGrounded = Physics2D.OverlapCircle(selectedChar.groundCheck.position, groundRadius, whatisGround);
         if (characterGrounded || selectedChar.isSwinging)
         {
@@ -63,7 +70,7 @@ public class Sam_Character_Controller : MonoBehaviour
         if (moveInputX == 0 && selectedChar._rb.velocity.y <= 0.1f && characterGrounded)
         {
 
-            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, .5f), 0);
+            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, 1f), 0);
         }   
 
         if (selectedChar.isSwinging)
@@ -154,8 +161,8 @@ public class Sam_Character_Controller : MonoBehaviour
             }
             else
             {
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)), 10);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)) / 2, ForceMode2D.Impulse);
                 selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
                 selectedChar.heldObject = null;
             }
@@ -179,8 +186,8 @@ public class Sam_Character_Controller : MonoBehaviour
             }     
             else
             {
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)), 10);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)) / 2, ForceMode2D.Impulse);
                 selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
                 selectedChar.heldObject = null;
                 selectedChar.isactive = false;
@@ -206,8 +213,8 @@ public class Sam_Character_Controller : MonoBehaviour
             }
             else
             {
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)), 10);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)) / 2, ForceMode2D.Impulse);
                 selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
                 selectedChar.heldObject = null;
                 selectedChar.isactive = false;

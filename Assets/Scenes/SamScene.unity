@@ -11804,11 +11804,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 3.6328125
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -11826,10 +11826,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bfe183de4404643925022737cb9535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  baseSpeed: 10
-  jumpForce: 15
-  dashSpeed: 50
+  speed: 100
+  baseSpeed: 100
+  jumpForce: 100
+  dashSpeed: 200
   throwSpeed: 20
   throwpoint: {fileID: 731547967}
   groundCheck: {fileID: 1978622978}
@@ -27468,11 +27468,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 3.6328125
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -27490,10 +27490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bfe183de4404643925022737cb9535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  baseSpeed: 10
-  jumpForce: 15
-  dashSpeed: 50
+  speed: 100
+  baseSpeed: 100
+  jumpForce: 100
+  dashSpeed: 200
   throwSpeed: 20
   throwpoint: {fileID: 839994735}
   groundCheck: {fileID: 807676689}

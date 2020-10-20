@@ -45,6 +45,15 @@ public class Sam_Character : MonoBehaviour
             
             dashCooler -= Time.deltaTime;
         }
+        if(!isactive)
+        {
+            bool characterGrounded = Physics2D.OverlapCircle(groundCheck.position, Sam_Character_Controller.instance.groundRadius, Sam_Character_Controller.instance.whatisGround);
+            if (characterGrounded)
+            {
+                _rb.velocity = new Vector2(Mathf.Lerp(_rb.velocity.x, 0, 1f), 0);
+            }
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
