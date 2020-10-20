@@ -9,12 +9,14 @@ public class Chris_CharacterController : MonoBehaviour
     [Range(0f, 15f)]
     [SerializeField] private float moveSpeed = 0f;
 
-    // Having big values in the Inspector seems off putting, will probably need to multiply it in code rather than inspector. Makes it look less daunting.
-    [Range(0f, 50f)]
+    [Range(0f, 10000f)]
+    [Tooltip("How much force is applied to the object when you jump.")]
     [SerializeField] private float jumpForce = 0f;
 
-    [Header("Misc")]
+    [Header("Debug")]
+    [Tooltip("Whether or not the character is selected. Visible for debugging purposes.")]
     [SerializeField] private bool selected = false;
+
 
 
     private Rigidbody2D m_Rigidbody2D;
@@ -26,11 +28,6 @@ public class Chris_CharacterController : MonoBehaviour
 
     private void Update()
     {
-        // This is not ideal, still running a check every frame for no reason.
-        // Will think of ways to prevent this.
-        if (!selected)
-            return;
-
         if(Input.GetKeyDown(KeyCode.Space))
         {
             m_Rigidbody2D.AddForce(Vector2.up * jumpForce);
@@ -39,11 +36,6 @@ public class Chris_CharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // This is not ideal, still running a check every fixed frame for no reason.
-        // Will think of ways to prevent this.
-        if (!selected)
-            return;
-
         float direction = Input.GetAxisRaw("Horizontal");
 
         float jerk = moveSpeed * direction;
@@ -58,14 +50,20 @@ public class Chris_CharacterController : MonoBehaviour
         this.enabled = !this.enabled;
         selected = !selected;
         m_Rigidbody2D.simulated = !m_Rigidbody2D.simulated;
+
+        // Gross way of doing this, but fine for testing. When all our mechanics/abilities are more streamlined and integrated we can slot this in better.
+        this.GetComponent<Chris_Fling>().enabled = !this.GetComponent<Chris_Fling>().enabled;
     }
 
     /// <summary>
     /// Manually set selected, won't need to worry about talking to changing each character.
     /// </summary>
-    /// <param name="selected"></param>
+    /// <param name="selected">The state you want the character to be in. true = enabled, false = disabled</param>
     public void SetSelected(bool selected)
     {
         this.enabled = this.selected = m_Rigidbody2D.simulated = selected;
+
+        // Gross way of doing this, but fine for testing. When all our mechanics/abilities are more streamlined and integrated we can slot this in better.
+        this.GetComponent<Chris_Fling>().enabled = selected;
     }
 }

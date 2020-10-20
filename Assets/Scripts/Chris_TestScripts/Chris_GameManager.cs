@@ -10,7 +10,7 @@ public class Chris_GameManager : MonoBehaviour
     // This is not a great way of handling this but it works for now :)
     public GameObject fireFella;
     public GameObject iceFella;
-    public GameObject camera;
+    public GameObject cameraObj;
 
 
     [Header("Controls")]
@@ -34,13 +34,13 @@ public class Chris_GameManager : MonoBehaviour
         {
             fireFella.GetComponent<Chris_CharacterController>().SetSelected(true);
             iceFella.GetComponent<Chris_CharacterController>().SetSelected(false);
-            camera.GetComponent<Chris_CameraController>().SetTarget((int)Character.Fire);
+            cameraObj.GetComponent<Chris_CameraController>().SetTarget((int)Character.Fire);
         }
         else
         {
             fireFella.GetComponent<Chris_CharacterController>().SetSelected(false);
             iceFella.GetComponent<Chris_CharacterController>().SetSelected(true);
-            camera.GetComponent<Chris_CameraController>().SetTarget((int)Character.Ice);
+            cameraObj.GetComponent<Chris_CameraController>().SetTarget((int)Character.Ice);
         }
     }
 
