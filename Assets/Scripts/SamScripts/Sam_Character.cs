@@ -36,25 +36,9 @@ public class Sam_Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(heldObject != null)
+        if (heldObject != null)
         {
-            heldObject.transform.position = throwpoint.position;
-        }
-        if(dashTime > 0)
-        {
-            dashTime -= Time.deltaTime;
-            speed = dashSpeed;
-            _rb.gravityScale = 0;
-
-        }
-        if(dashTime < 0)
-        {
-            dashCooler = dashCooldown;
-            dashTime = 0;
-            speed = baseSpeed;
-            _rb.gravityScale = 3;
-            
+            heldObject.transform.position = throwpoint.transform.position;
         }
         if(dashCooler >= 0)
         {
@@ -65,8 +49,9 @@ public class Sam_Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Swingable")
+        if(other.tag == "Swingable" && !isSwinging)
         {
+            transform.position = other.GetComponent<DistanceJoint2D>().connectedAnchor;
             other.GetComponent<DistanceJoint2D>().connectedBody = _rb;
             swing = other.GetComponent<Sam_Rope>();
             other.GetComponent<Sam_Rope>().inUse = true;

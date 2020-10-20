@@ -26,6 +26,7 @@ public class Sam_Rope : MonoBehaviour
         else
         {
             _lr.SetPosition(1, basePoint);
+            _dj.connectedAnchor = basePoint;
         }
     }
 }

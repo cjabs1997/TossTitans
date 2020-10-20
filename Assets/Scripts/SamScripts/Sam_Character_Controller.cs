@@ -10,6 +10,8 @@ public class Sam_Character_Controller : MonoBehaviour
     public Sam_Character selectedChar;
     public float facingDirection;
 
+    public float maxVelocityX;
+
     public bool characterGrounded;
     public LayerMask whatisGround;
     public float groundRadius = 0.2f;
@@ -29,12 +31,14 @@ public class Sam_Character_Controller : MonoBehaviour
 
     void FixedUpdate()
     {
+
         characterGrounded = Physics2D.OverlapCircle(selectedChar.groundCheck.position, groundRadius, whatisGround);
         if (characterGrounded || selectedChar.isSwinging)
         {
             selectedChar.hasDoubleJump = true;
         }
-        float moveInputX = Input.GetAxisRaw("Horizontal");
+        float moveInputX = Input.GetAxis("Horizontal");
+        Debug.Log(moveInputX);
         if (moveInputX > 0)
         {
             facingDirection = 1;
@@ -43,10 +47,25 @@ public class Sam_Character_Controller : MonoBehaviour
         {
             facingDirection = -1;
         }
-        if (selectedChar.dashTime <= 0 && !selectedChar.isSwinging)
+        Debug.Log("CharVeloc: " + selectedChar._rb.velocity.x);
+        if (!selectedChar.isSwinging && moveInputX !=0)
         {
-            selectedChar._rb.velocity = new Vector2(moveInputX * selectedChar.speed, selectedChar._rb.velocity.y);
+            if (Mathf.Abs(selectedChar._rb.velocity.x) <= maxVelocityX)
+            {
+                selectedChar._rb.AddForce(new Vector2(moveInputX * selectedChar.speed, 0), ForceMode2D.Force);                
+            }
+            else if (characterGrounded)
+            {
+                selectedChar._rb.velocity = new Vector2(facingDirection * maxVelocityX, selectedChar._rb.velocity.y);
+            }
         }
+
+        if (moveInputX == 0 && selectedChar._rb.velocity.y <= 0.1f && characterGrounded)
+        {
+
+            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, .5f), 0);
+        }   
+
         if (selectedChar.isSwinging)
         {
                 Vector2 ropePoint = selectedChar.swing.transform.position;
@@ -63,7 +82,7 @@ public class Sam_Character_Controller : MonoBehaviour
                     perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);                                    
                 }
 
-                Vector2 force = perpendicularDirection * selectedChar.dashSpeed;
+                Vector2 force = perpendicularDirection * selectedChar.speed/2;
                 selectedChar._rb.AddForce(force, ForceMode2D.Force);
             }
             
@@ -85,19 +104,25 @@ public class Sam_Character_Controller : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump") && characterGrounded)
         {
+            new Vector2(selectedChar._rb.velocity.x, 0);
             selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
+            characterGrounded = false;
         }
         if (Input.GetButtonDown("Jump") && !characterGrounded && selectedChar.hasDoubleJump)
         {
+            selectedChar._rb.velocity = new Vector2(selectedChar._rb.velocity.x, 0);
             selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
             selectedChar.hasDoubleJump = false;
         }
         if (Input.GetButtonDown("Dash"))
         {
-            if (selectedChar.dashCooler <= 0 & selectedChar.dashTime <=0)
+            if (selectedChar.dashCooler <= 0)
             {
-                selectedChar._rb.velocity = new Vector2(Input.GetAxis("Horizontal") * selectedChar.dashSpeed, Input.GetAxis("Vertical") * selectedChar.dashSpeed);
-                selectedChar.dashTime = selectedChar.dashLength;
+                selectedChar._rb.velocity = Vector2.zero;
+                float moveInputX = Input.GetAxisRaw("Horizontal");
+                float moveInputY = Input.GetAxisRaw("Vertical");
+                selectedChar._rb.AddForce(new Vector2(moveInputX, moveInputY) * selectedChar.dashSpeed/2, ForceMode2D.Impulse);
+                selectedChar.dashCooler = selectedChar.dashCooldown;
             }
         }
         if (Input.GetButtonDown("Grab/Throw"))
