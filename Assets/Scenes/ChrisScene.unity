@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261688387}
   - component: {fileID: 261688388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,6 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 355975470}
   - component: {fileID: 355975472}
+  - component: {fileID: 355975473}
   - component: {fileID: 355975471}
   m_Layer: 5
   m_Name: Text
@@ -411,9 +412,11 @@ MonoBehaviour:
     with the main branch as Sam already has a pretty indepth controller. \n\nMost
     values are exaggerated or a bit off but everything is accessible in the Inspector
     to play with. I think I put tooltips where applicable but will flesh out more
-    as I go.\n\nCurrently testing goofy mechanics so we have some things to look
-    over! :)\n\nQ - Swaps\nE - Flings towards other character. Can charge up to a
-    maximum."
+    as I go. You can use the tab key to toggle the text.\n\nCurrently testing goofy
+    mechanics so we have some things to look over! :)\n\nBoth Characters\nQ - Swaps\nE
+    - Flings towards other character. Can charge up to a maximum.\n\nIce Only\nF
+    - Freeze into an iceblock. Will stay suspended in midair and can be jumped on
+    by the fire fella."
 --- !u!222 &355975472
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -422,6 +425,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355975469}
   m_CullTransparentMesh: 0
+--- !u!114 &355975473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355975469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591392e448cf6ea46b9e8672c6ef3d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleKey: 9
 --- !u!1 &400146283
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,8 +500,9 @@ GameObject:
   - component: {fileID: 668204963}
   - component: {fileID: 668204962}
   - component: {fileID: 668204966}
+  - component: {fileID: 668204967}
   - component: {fileID: 668204965}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IceFella
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
   jumpForce: 1750
-  selected: 0
 --- !u!50 &668204963
 Rigidbody2D:
   serializedVersion: 4
@@ -613,6 +629,22 @@ MonoBehaviour:
   maxMagnitude: 500
   timeToMax: 1.5
   otherPlayer: {fileID: 1731490694}
+--- !u!114 &668204967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668204960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8233f0389eb994f90bf6486c48dd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezeKey: 102
+  freezeColor: {r: 0.1512549, g: 0.2418852, b: 0.9716981, a: 1}
+  freezeLayer: 9
+  frozen: 0
 --- !u!1 &716507446
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716507447}
   - component: {fileID: 716507448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1069,7 @@ GameObject:
   - component: {fileID: 1731490696}
   - component: {fileID: 1731490699}
   - component: {fileID: 1731490695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireFella
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1101,7 +1133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
   jumpForce: 1750
-  selected: 0
 --- !u!50 &1731490697
 Rigidbody2D:
   serializedVersion: 4

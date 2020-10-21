@@ -13,12 +13,6 @@ public class Chris_CharacterController : MonoBehaviour
     [Tooltip("How much force is applied to the object when you jump.")]
     [SerializeField] private float jumpForce = 0f;
 
-    [Header("Debug")]
-    [Tooltip("Whether or not the character is selected. Visible for debugging purposes.")]
-    [SerializeField] private bool selected = false;
-
-
-
     private Rigidbody2D m_Rigidbody2D;
 
     private void Awake()
@@ -48,22 +42,24 @@ public class Chris_CharacterController : MonoBehaviour
     public void SwapSelected()
     {
         this.enabled = !this.enabled;
-        selected = !selected;
-        m_Rigidbody2D.simulated = !m_Rigidbody2D.simulated;
 
         // Gross way of doing this, but fine for testing. When all our mechanics/abilities are more streamlined and integrated we can slot this in better.
         this.GetComponent<Chris_Fling>().enabled = !this.GetComponent<Chris_Fling>().enabled;
+        if (TryGetComponent<Chris_Freeze>(out Chris_Freeze freeze))
+            freeze.enabled = !freeze.enabled;
     }
 
     /// <summary>
-    /// Manually set selected, won't need to worry about talking to changing each character.
+    /// Manually set selected. Used to more easily change the selected character.
     /// </summary>
     /// <param name="selected">The state you want the character to be in. true = enabled, false = disabled</param>
     public void SetSelected(bool selected)
     {
-        this.enabled = this.selected = m_Rigidbody2D.simulated = selected;
+        this.enabled = selected;
 
         // Gross way of doing this, but fine for testing. When all our mechanics/abilities are more streamlined and integrated we can slot this in better.
         this.GetComponent<Chris_Fling>().enabled = selected;
+        if (TryGetComponent<Chris_Freeze>(out Chris_Freeze freeze))
+            freeze.enabled = selected;
     }
 }
