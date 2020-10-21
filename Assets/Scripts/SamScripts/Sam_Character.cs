@@ -67,6 +67,15 @@ public class Sam_Character : MonoBehaviour
             other.GetComponent<Sam_Rope>().inUse = true;
             isSwinging = true;
         }
+
+        if (other.tag == "SwingPoint" && !isSwinging)
+        {
+           if(other.GetComponent<SwingPoint>().attachedPlayer = null)
+            {
+                other.GetComponent<SwingPoint>().attachedPlayer = this.gameObject;
+
+            }
+        }
     }
 
 }

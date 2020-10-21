@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Swingable
+  - SwingPoint
   layers:
   - Default
   - TransparentFX
