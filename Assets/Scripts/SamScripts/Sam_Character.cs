@@ -76,6 +76,20 @@ public class Sam_Character : MonoBehaviour
 
             }
         }
+        if (other.gameObject.tag == "PlatformGroup") 
+        {
+
+            transform.SetParent(other.gameObject.transform);
+            Debug.Log(transform.parent);
+
+            _rb.velocity = other.GetComponent<Rigidbody2D>().velocity;
+        }
+
+        
+            if (other.gameObject.tag == "PlatformGroup")
+        {
+            transform.SetParent(null);
+        }
     }
 
 }

@@ -45,7 +45,6 @@ public class Sam_Character_Controller : MonoBehaviour
             selectedChar.hasDoubleJump = true;
         }
         float moveInputX = Input.GetAxisRaw("Horizontal");
-        Debug.Log(moveInputX);
         if (moveInputX > 0)
         {
             facingDirection = 1;
@@ -54,7 +53,6 @@ public class Sam_Character_Controller : MonoBehaviour
         {
             facingDirection = -1;
         }
-        Debug.Log("CharVeloc: " + selectedChar._rb.velocity.x);
         if (!selectedChar.isSwinging && moveInputX !=0)
         {
             if (Mathf.Abs(selectedChar._rb.velocity.x) <= maxVelocityX)
@@ -67,10 +65,10 @@ public class Sam_Character_Controller : MonoBehaviour
             }
         }
 
-        if (moveInputX == 0 && selectedChar._rb.velocity.y <= 0.1f && characterGrounded)
+        if (moveInputX == 0 && selectedChar._rb.velocity.y <= 1f && characterGrounded)
         {
 
-            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, lerpValue), 0);
+            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, lerpValue), selectedChar._rb.velocity.y);
         }   
 
         if (selectedChar.isSwinging)
