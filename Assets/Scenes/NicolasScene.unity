@@ -133,9 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 18210377}
   - component: {fileID: 18210376}
-  - component: {fileID: 18210375}
   - component: {fileID: 18210374}
   - component: {fileID: 18210373}
+  - component: {fileID: 18210375}
   m_Layer: 9
   m_Name: Big Blue
   m_TagString: Untagged
@@ -165,7 +165,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 1.875, y: 1.9375}
   m_EdgeRadius: 0
@@ -199,28 +199,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 18210372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96bfe183de4404643925022737cb9535, type: 3}
+  m_Script: {fileID: 11500000, guid: e5d48278d43159842871f72c8c00a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  baseSpeed: 10
-  jumpForce: 15
-  dashSpeed: 20
-  throwSpeed: 20
-  throwpoint: {fileID: 1419020159}
-  groundCheck: {fileID: 254036350}
+  minGroundNormalY: 0.65
+  gravityModifier: 5
+  velocity: {x: 0, y: 0}
+  runSpeed: 10
+  jumpSpeed: 20
+  dashSpeed: 0
+  throwSpeed: 0
+  groundCheck: {fileID: 352729329}
   hasDoubleJump: 0
   dashLength: 0
   dashTime: 0
   dashCooler: 0
-  dashCooldown: 2
-  isactive: 0
-  isHeld: 0
+  dashCooldown: 0
+  facingDirection: 0
   highlightParticle: {fileID: 1060353017}
-  swing: {fileID: 0}
-  isSwinging: 0
+  isActive: 0
+  isHeld: 0
   heldObject: {fileID: 0}
-  _rb: {fileID: 0}
+  rb: {fileID: 0}
+  characterGrounded: 0
+  whatisPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  followCam: {fileID: 2140985208}
+  collider2d: {fileID: 0}
+  controlEnabled: 1
 --- !u!212 &18210376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -287,7 +294,7 @@ Transform:
   - {fileID: 254036350}
   - {fileID: 1060353020}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254036349
 GameObject:
@@ -553,7 +560,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &352729334
@@ -10586,7 +10593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412179464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.04, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2114002294}
@@ -26964,9 +26971,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1158461238}
   - component: {fileID: 1158461242}
-  - component: {fileID: 1158461239}
   - component: {fileID: 1158461241}
   - component: {fileID: 1158461240}
+  - component: {fileID: 1158461239}
   m_Layer: 9
   m_Name: Big Red
   m_TagString: Untagged
@@ -27000,28 +27007,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1158461237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96bfe183de4404643925022737cb9535, type: 3}
+  m_Script: {fileID: 11500000, guid: e5d48278d43159842871f72c8c00a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  baseSpeed: 10
-  jumpForce: 15
-  dashSpeed: 20
-  throwSpeed: 20
-  throwpoint: {fileID: 1224194129}
-  groundCheck: {fileID: 1931571681}
+  minGroundNormalY: 0.65
+  gravityModifier: 5
+  velocity: {x: 0, y: 0}
+  runSpeed: 10
+  jumpSpeed: 20
+  dashSpeed: 0
+  throwSpeed: 0
+  groundCheck: {fileID: 0}
   hasDoubleJump: 0
   dashLength: 0
   dashTime: 0
   dashCooler: 0
-  dashCooldown: 2
-  isactive: 0
-  isHeld: 0
+  dashCooldown: 0
+  facingDirection: 0
   highlightParticle: {fileID: 1524176844}
-  swing: {fileID: 0}
-  isSwinging: 0
+  isActive: 1
+  isHeld: 0
   heldObject: {fileID: 0}
-  _rb: {fileID: 0}
+  rb: {fileID: 0}
+  characterGrounded: 0
+  whatisPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  followCam: {fileID: 2140985208}
+  collider2d: {fileID: 0}
+  controlEnabled: 1
 --- !u!61 &1158461240
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32195,63 +32209,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1867419188
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1867419190}
-  - component: {fileID: 1867419189}
-  m_Layer: 0
-  m_Name: Sam_Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1867419189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867419188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ffb0ba31cb4e304881605d27a9e022c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bigRed: {fileID: 1158461239}
-  bigBlue: {fileID: 18210375}
-  selectedChar: {fileID: 0}
-  facingDirection: 0
-  characterGrounded: 0
-  whatisGround:
-    serializedVersion: 2
-    m_Bits: 256
-  groundRadius: 0.2
-  whatisPlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  followCam: {fileID: 2140985208}
---- !u!4 &1867419190
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867419188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.344754, y: -1.5755553, z: -1.2676277}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931571680
 GameObject:
