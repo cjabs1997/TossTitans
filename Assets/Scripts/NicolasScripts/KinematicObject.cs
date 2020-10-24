@@ -89,7 +89,6 @@ public class KinematicObject : MonoBehaviour
 
     protected virtual void Update()
     {
-        targetVelocity = Vector2.zero;
         ComputeVelocity();
     }
 
@@ -100,18 +99,16 @@ public class KinematicObject : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        Debug.Log(velocity.y);
         //if already falling, fall faster than the jump speed, otherwise use normal gravity.
         if (velocity.y < 0)
             velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         else
             velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
 
-        velocity.x = targetVelocity.x;
-
         IsGrounded = false;
 
         var deltaPosition = velocity * Time.deltaTime;
+        //Debug.Log(deltaPosition);
 
         var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 

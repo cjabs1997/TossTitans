@@ -6,17 +6,13 @@ using UnityEngine;
 public class CharacterController : KinematicObject
 {
     public float runSpeed = 10;
-    public float jumpSpeed = 16;
-    public float dashSpeed;
+    public float jumpSpeed = 20;
+    public float dashSpeed = 3;
     public float throwSpeed;
     public Transform groundCheck;
     public bool hasDoubleJump;
-    public float dashLength;
-    public float dashTime;
-    public float dashCooler;
-    public float dashCooldown;
 
-    public float facingDirection;
+    public GameObject ally;
 
     public GameObject highlightParticle;
 
@@ -25,14 +21,12 @@ public class CharacterController : KinematicObject
     public GameObject heldObject;
     public Rigidbody2D rb;
 
-    public bool characterGrounded;
     public LayerMask whatisPlayer;
 
     public CinemachineVirtualCamera followCam;
 
     public Collider2D collider2d;
-    public bool controlEnabled = true;
-
+    bool dash;
     bool jump;
     Vector2 move;
     SpriteRenderer spriteRenderer;
@@ -134,10 +128,19 @@ public class CharacterController : KinematicObject
             {
                 jump = true;
             }
-            if (hasDoubleJump && Input.GetButtonDown("Jump"))
+            else if (hasDoubleJump && Input.GetButtonDown("Jump"))
             {
                 jump = true;
                 hasDoubleJump = false;
+            }
+            else if (Input.GetButtonDown("Dash"))
+            {
+                dash = true;
+                jump = false;
+            }
+            else if (Input.GetButtonUp("Dash"))
+            {
+                dash = false;
             }
         }
         else
@@ -149,6 +152,16 @@ public class CharacterController : KinematicObject
 
     protected override void ComputeVelocity()
     {
+        if (dash)
+        {
+            Vector3 distance = ally.transform.position - transform.position + new Vector3(0, 0.5f, 0);
+            if(distance.magnitude > 1)
+            {
+                velocity = (Vector2) Vector3.Normalize(distance) * dashSpeed;
+                return;
+            }     
+        }
+
         if (jump)
         {
             velocity.y = jumpSpeed;
@@ -160,7 +173,7 @@ public class CharacterController : KinematicObject
         else if (move.x < -0.01f)
             spriteRenderer.flipX = true;
 
-        targetVelocity = move * runSpeed;
+        velocity.x = move.x * runSpeed;
     }
 
     void ActivateCharacter()

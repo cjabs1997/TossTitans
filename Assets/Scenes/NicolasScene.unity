@@ -207,27 +207,21 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   runSpeed: 10
   jumpSpeed: 20
-  dashSpeed: 0
+  dashSpeed: 40
   throwSpeed: 0
   groundCheck: {fileID: 352729329}
   hasDoubleJump: 0
-  dashLength: 0
-  dashTime: 0
-  dashCooler: 0
-  dashCooldown: 0
-  facingDirection: 0
+  ally: {fileID: 1158461237}
   highlightParticle: {fileID: 1060353017}
   isActive: 0
   isHeld: 0
   heldObject: {fileID: 0}
   rb: {fileID: 0}
-  characterGrounded: 0
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 512
   followCam: {fileID: 2140985208}
   collider2d: {fileID: 0}
-  controlEnabled: 1
 --- !u!212 &18210376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27015,27 +27009,21 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   runSpeed: 10
   jumpSpeed: 20
-  dashSpeed: 0
+  dashSpeed: 40
   throwSpeed: 0
   groundCheck: {fileID: 0}
   hasDoubleJump: 0
-  dashLength: 0
-  dashTime: 0
-  dashCooler: 0
-  dashCooldown: 0
-  facingDirection: 0
+  ally: {fileID: 18210372}
   highlightParticle: {fileID: 1524176844}
   isActive: 1
   isHeld: 0
   heldObject: {fileID: 0}
   rb: {fileID: 0}
-  characterGrounded: 0
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 512
   followCam: {fileID: 2140985208}
   collider2d: {fileID: 0}
-  controlEnabled: 1
 --- !u!61 &1158461240
 BoxCollider2D:
   m_ObjectHideFlags: 0
