@@ -211,15 +211,12 @@ MonoBehaviour:
   runSpeed: 10
   jumpSpeed: 20
   dashSpeed: 25
-  throwSpeed: 30
+  throwSpeed: 40
   groundCheck: {fileID: 352729329}
   hasDoubleJump: 0
   ally: {fileID: 1158461237}
   highlightParticle: {fileID: 1060353017}
   isActive: 0
-  isHeld: 0
-  heldObject: {fileID: 0}
-  rb: {fileID: 0}
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 512
@@ -45498,15 +45495,12 @@ MonoBehaviour:
   runSpeed: 10
   jumpSpeed: 20
   dashSpeed: 25
-  throwSpeed: 30
+  throwSpeed: 40
   groundCheck: {fileID: 0}
   hasDoubleJump: 0
   ally: {fileID: 18210372}
   highlightParticle: {fileID: 1524176844}
   isActive: 1
-  isHeld: 0
-  heldObject: {fileID: 0}
-  rb: {fileID: 0}
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 512

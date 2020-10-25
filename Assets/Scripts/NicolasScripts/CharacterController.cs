@@ -26,6 +26,7 @@ public class CharacterController : KinematicObject
     bool dash;
     bool jump;
     bool thrown;
+    public bool isHeld;
     Vector2 move;
     SpriteRenderer spriteRenderer;
 
@@ -81,7 +82,12 @@ public class CharacterController : KinematicObject
             }
             else if (Input.GetButtonDown("Grab/Throw") && CanBeThrown())
             {
+                isHeld = true;
+            }
+            else if (Input.GetButtonUp("Grab/Throw") && isHeld)
+            {
                 thrown = true;
+                isHeld = false;
             }
             else if (Input.GetButtonDown("Dash"))
             {
@@ -130,6 +136,14 @@ public class CharacterController : KinematicObject
             velocity = move * throwSpeed;
             targetVelocity = move * throwSpeed;
             thrown = false;
+            return;
+        }
+
+        if (isHeld)
+        {
+            Vector3 distance = ally.transform.position - transform.position + new Vector3(0, 0.5f, 0);
+            velocity = distance * 10f;
+            targetVelocity =  distance * 10f;
             return;
         }
 
