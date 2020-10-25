@@ -18,6 +18,12 @@ public class KinematicObject : MonoBehaviour
     /// </summary>
     public float gravityModifier = 1f;
 
+    public float groundControl= 250;
+
+    public float aerialControl = 50;
+
+    public float maxSpeed = 10;
+
     /// <summary>
     /// The current velocity of the entity.
     /// </summary>
@@ -99,11 +105,25 @@ public class KinematicObject : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        //if already falling, fall faster than the jump speed, otherwise use normal gravity.
-        if (velocity.y < 0)
+        if (targetVelocity.y == 0)
+        {
             velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+        }
         else
-            velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+        {
+            velocity.y = targetVelocity.y;
+        }
+
+        float control = IsGrounded ? groundControl : aerialControl;
+
+        if (targetVelocity.x > velocity.x)
+        {
+            velocity.x = Mathf.Min(targetVelocity.x, velocity.x + control * Time.deltaTime);
+        }
+        else if (targetVelocity.x < velocity.x)
+        {
+            velocity.x = Mathf.Max(targetVelocity.x, velocity.x - control * Time.deltaTime);
+        }
 
         IsGrounded = false;
 
