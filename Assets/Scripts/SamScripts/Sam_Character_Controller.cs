@@ -5,18 +5,30 @@ using UnityEngine;
 
 public class Sam_Character_Controller : MonoBehaviour
 {
+    public static Sam_Character_Controller instance;
+
     public Sam_Character bigRed;
     public Sam_Character bigBlue;
     public Sam_Character selectedChar;
     public float facingDirection;
-
+    public float lerpValue;
+    public float maxVelocityX;
+    public float moveInputX;
+    public float moveInputY;
     public bool characterGrounded;
     public LayerMask whatisGround;
     public float groundRadius = 0.2f;
     public LayerMask whatisPlayer;
+    public bool touchingAlly;
+    public float allyCheck = .5f;
 
     public CinemachineVirtualCamera followCam;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         selectedChar = bigBlue.GetComponent<Sam_Character>();
@@ -29,12 +41,16 @@ public class Sam_Character_Controller : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         characterGrounded = Physics2D.OverlapCircle(selectedChar.groundCheck.position, groundRadius, whatisGround);
+        
+        
         if (characterGrounded || selectedChar.isSwinging)
         {
             selectedChar.hasDoubleJump = true;
         }
-        float moveInputX = Input.GetAxisRaw("Horizontal");
+        moveInputX = Input.GetAxisRaw("Horizontal");
+        moveInputY = Input.GetAxisRaw("Vertical");
         if (moveInputX > 0)
         {
             facingDirection = 1;
@@ -43,10 +59,24 @@ public class Sam_Character_Controller : MonoBehaviour
         {
             facingDirection = -1;
         }
-        if (selectedChar.dashTime <= 0 && !selectedChar.isSwinging)
+        if (!selectedChar.isSwinging && moveInputX !=0)
         {
-            selectedChar._rb.velocity = new Vector2(moveInputX * selectedChar.speed, selectedChar._rb.velocity.y);
+            if (Mathf.Abs(selectedChar._rb.velocity.x) <= maxVelocityX)
+            {
+                selectedChar._rb.AddForce(new Vector2(moveInputX * selectedChar.speed, 0), ForceMode2D.Force);                
+            }
+            else if (characterGrounded)
+            {
+                selectedChar._rb.velocity = new Vector2(moveInputX * maxVelocityX, selectedChar._rb.velocity.y);
+            }
         }
+
+        if (moveInputX == 0 && selectedChar._rb.velocity.y <= 1f && characterGrounded)
+        {
+
+            selectedChar._rb.velocity = new Vector2(Mathf.Lerp(selectedChar._rb.velocity.x, 0, lerpValue), selectedChar._rb.velocity.y);
+        }   
+
         if (selectedChar.isSwinging)
         {
                 Vector2 ropePoint = selectedChar.swing.transform.position;
@@ -63,7 +93,7 @@ public class Sam_Character_Controller : MonoBehaviour
                     perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);                                    
                 }
 
-                Vector2 force = perpendicularDirection * selectedChar.dashSpeed;
+                Vector2 force = perpendicularDirection * selectedChar.speed/2;
                 selectedChar._rb.AddForce(force, ForceMode2D.Force);
             }
             
@@ -76,28 +106,64 @@ public class Sam_Character_Controller : MonoBehaviour
         {
             swapCharacter();
         }
-        if (Input.GetButtonDown("Jump") && selectedChar.isSwinging)
+        if (Input.GetButtonDown("Jump"))
         {
-            selectedChar.isSwinging = false;
-            selectedChar.swing._dj.connectedBody = null;
-            selectedChar.swing.inUse = false;
-            selectedChar.swing = null;
-        }
-        if (Input.GetButtonDown("Jump") && characterGrounded)
-        {
-            selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
-        }
-        if (Input.GetButtonDown("Jump") && !characterGrounded && selectedChar.hasDoubleJump)
-        {
-            selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
-            selectedChar.hasDoubleJump = false;
+            GameObject vaultablePlayer = null;
+            
+            if (selectedChar.heldObject == null)
+            {
+                
+                Collider2D[] otherPlayer = Physics2D.OverlapCircleAll(selectedChar.transform.position, .5f, whatisPlayer);
+                foreach (Collider2D vaultable in otherPlayer)
+                {
+                    if (!vaultable.GetComponent<Sam_Character>().isactive)
+                    {
+                        vaultablePlayer = vaultable.gameObject;
+                    }
+                }
+                Debug.Log(vaultablePlayer);
+                if (vaultablePlayer != null)
+                {
+                    Vector2 vaultVector = new Vector2(moveInputX, moveInputY);
+                    selectedChar._rb.AddForce(vaultVector * ((vaultablePlayer.GetComponent<Sam_Character>().throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x) * 10)), ForceMode2D.Impulse);
+                    
+                }
+            }
+            if (vaultablePlayer == null)
+            {
+                if (selectedChar.isSwinging)
+                {
+                    selectedChar.isSwinging = false;
+                    selectedChar.swing._dj.connectedBody = null;
+                    selectedChar.swing.inUse = false;
+                    selectedChar.swing = null;
+                    Vector2 throwVector = new Vector2(moveInputX, moveInputY);
+                    selectedChar._rb.AddForce(throwVector * (selectedChar.speed + Mathf.Abs(selectedChar._rb.velocity.x) * 10), ForceMode2D.Impulse);
+                }
+                if (vaultablePlayer == null && characterGrounded)
+                {
+                    selectedChar._rb.velocity = new Vector2(selectedChar._rb.velocity.x, 0);
+                    selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
+
+                }
+                if (vaultablePlayer == null && !characterGrounded && selectedChar.hasDoubleJump)
+                {
+                    selectedChar._rb.velocity = new Vector2(selectedChar._rb.velocity.x, 0);
+                    selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
+                    selectedChar.hasDoubleJump = false;
+                }
+            }
+            
         }
         if (Input.GetButtonDown("Dash"))
         {
-            if (selectedChar.dashCooler <= 0 & selectedChar.dashTime <=0)
+            if (selectedChar.dashCooler <= 0)
             {
-                selectedChar._rb.velocity = new Vector2(Input.GetAxis("Horizontal") * selectedChar.dashSpeed, Input.GetAxis("Vertical") * selectedChar.dashSpeed);
-                selectedChar.dashTime = selectedChar.dashLength;
+                selectedChar._rb.velocity = Vector2.zero;
+                float moveInputX = Input.GetAxisRaw("Horizontal");
+                float moveInputY = Input.GetAxisRaw("Vertical");
+                selectedChar._rb.AddForce(new Vector2(moveInputX, moveInputY) * selectedChar.dashSpeed, ForceMode2D.Impulse);
+                selectedChar.dashCooler = selectedChar.dashCooldown;
             }
         }
         if (Input.GetButtonDown("Grab/Throw"))
@@ -108,6 +174,8 @@ public class Sam_Character_Controller : MonoBehaviour
                 selectedChar.swing._dj.connectedBody = null;
                 selectedChar.swing.inUse = false;
                 selectedChar.swing = null;
+                Vector2 throwVector = new Vector2(moveInputX, moveInputY);
+                selectedChar._rb.AddForce(throwVector * (selectedChar.speed + Mathf.Abs(selectedChar._rb.velocity.x) * 10), ForceMode2D.Impulse);
             }
             if (selectedChar.heldObject == null)
             {
@@ -129,10 +197,28 @@ public class Sam_Character_Controller : MonoBehaviour
             }
             else
             {
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
-                selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
-                selectedChar.heldObject = null;
+                if (moveInputX != 0 && moveInputY != 0)
+                {
+                    Vector2 throwVector = new Vector2(moveInputX, moveInputY);
+
+                    selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(throwVector * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x) * 10), ForceMode2D.Impulse);
+                    selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
+                    selectedChar.heldObject = null;
+                }
+                if(moveInputX == 0 && moveInputY!= 0)
+                {
+                    Vector2 throwVector = new Vector2(selectedChar.throwpoint.position.y + facingDirection, moveInputY);
+                    selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(throwVector * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x) * 10), ForceMode2D.Impulse);
+                    selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
+                    selectedChar.heldObject = null;
+                }
+                if (moveInputX == 0 && moveInputY == 0)
+                {
+                    Vector2 throwVector = new Vector2(selectedChar.throwpoint.position.y + facingDirection, selectedChar.throwpoint.position.y + 1);
+                    selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(throwVector * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x) * 10), ForceMode2D.Impulse);
+                    selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
+                    selectedChar.heldObject = null;
+                }
             }
 
         }
@@ -154,8 +240,8 @@ public class Sam_Character_Controller : MonoBehaviour
             }     
             else
             {
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)), 10);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)) / 2, ForceMode2D.Impulse);
                 selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
                 selectedChar.heldObject = null;
                 selectedChar.isactive = false;
@@ -181,8 +267,8 @@ public class Sam_Character_Controller : MonoBehaviour
             }
             else
             {
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * selectedChar.throwSpeed, 10);
-                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * selectedChar.throwSpeed / 2, ForceMode2D.Impulse);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(facingDirection * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)), 10);
+                selectedChar.heldObject.GetComponent<Rigidbody2D>().AddForce(transform.up * (selectedChar.throwSpeed + Mathf.Abs(selectedChar._rb.velocity.x)) / 2, ForceMode2D.Impulse);
                 selectedChar.heldObject.GetComponent<Sam_Character>().isHeld = false;
                 selectedChar.heldObject = null;
                 selectedChar.isactive = false;
