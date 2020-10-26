@@ -58,7 +58,7 @@ public class Sam_Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Swingable" && !isSwinging)
+        if(other.tag == "Swingable" && !isSwinging && isactive)
         {
             hasDoubleJump = true;
             transform.position = other.GetComponent<DistanceJoint2D>().connectedAnchor;
@@ -68,7 +68,7 @@ public class Sam_Character : MonoBehaviour
             isSwinging = true;
         }
 
-        if (other.tag == "SwingPoint" && !isSwinging)
+        if (other.tag == "SwingPoint" && !isSwinging && isactive)
         {
            if(other.GetComponent<SwingPoint>().attachedPlayer = null)
             {
