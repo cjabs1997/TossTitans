@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class Sam_Character_Controller : MonoBehaviour
@@ -34,6 +35,10 @@ public class Sam_Character_Controller : MonoBehaviour
         selectedChar = bigBlue.GetComponent<Sam_Character>();
         selectedChar.isactive = true;
         selectedChar.highlightParticle.SetActive(true);
+        bigBlue._rb = bigBlue.GetComponent<Rigidbody2D>();
+        bigBlue._sr = bigBlue.GetComponent<SpriteRenderer>();
+        bigRed._rb = bigRed.GetComponent<Rigidbody2D>();
+        bigRed._sr = bigRed.GetComponent<SpriteRenderer>();
         followCam.LookAt = selectedChar.transform;
         followCam.Follow = selectedChar.transform;
 
@@ -129,31 +134,32 @@ public class Sam_Character_Controller : MonoBehaviour
                     
                 }
             }
-            if (vaultablePlayer == null)
-            {
-                if (selectedChar.isSwinging)
-                {
-                    selectedChar.isSwinging = false;
-                    selectedChar.swing._dj.connectedBody = null;
-                    selectedChar.swing.inUse = false;
-                    selectedChar.swing = null;
-                    Vector2 throwVector = new Vector2(moveInputX, moveInputY);
-                    selectedChar._rb.AddForce(throwVector * (selectedChar.speed + Mathf.Abs(selectedChar._rb.velocity.x) * 10), ForceMode2D.Impulse);
-                }
+            if (vaultablePlayer == null && !selectedChar.isSwinging)
+            {                
                 if (vaultablePlayer == null && characterGrounded)
                 {
                     selectedChar._rb.velocity = new Vector2(selectedChar._rb.velocity.x, 0);
                     selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
 
                 }
-                if (vaultablePlayer == null && !characterGrounded && selectedChar.hasDoubleJump)
+                if (vaultablePlayer == null && !characterGrounded && selectedChar.hasDoubleJump && !selectedChar.isSwinging)
                 {
                     selectedChar._rb.velocity = new Vector2(selectedChar._rb.velocity.x, 0);
                     selectedChar._rb.AddForce(transform.up * selectedChar.jumpForce, ForceMode2D.Impulse);
                     selectedChar.hasDoubleJump = false;
                 }
             }
-            
+            if (selectedChar.isSwinging && vaultablePlayer == null)
+            {
+                selectedChar.isSwinging = false;
+                selectedChar.swing._dj.connectedBody = null;
+                selectedChar.swing.inUse = false;
+                selectedChar.swing = null;
+                Vector2 throwVector = new Vector2(moveInputX, moveInputY);
+                selectedChar._rb.AddForce(throwVector * (selectedChar.speed + Mathf.Abs(selectedChar._rb.velocity.x) * 10), ForceMode2D.Impulse);
+                selectedChar.hasDoubleJump = true;
+            }
+
         }
         if (Input.GetButtonDown("Dash"))
         {
@@ -232,10 +238,12 @@ public class Sam_Character_Controller : MonoBehaviour
             {               
                 selectedChar.isactive = false;
                 selectedChar.highlightParticle.SetActive(false);
+                selectedChar._sr.sortingOrder = 0;
                 selectedChar = bigRed.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
+                selectedChar._sr.sortingOrder = 1;
                 selectedChar.highlightParticle.SetActive(true);
             }     
             else
@@ -246,10 +254,12 @@ public class Sam_Character_Controller : MonoBehaviour
                 selectedChar.heldObject = null;
                 selectedChar.isactive = false;
                 selectedChar.highlightParticle.SetActive(false);
+                selectedChar._sr.sortingOrder = 0;
                 selectedChar = bigRed.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
+                selectedChar._sr.sortingOrder = 1;
                 selectedChar.highlightParticle.SetActive(true);
             }
         }
@@ -259,10 +269,12 @@ public class Sam_Character_Controller : MonoBehaviour
             {
                 selectedChar.isactive = false;
                 selectedChar.highlightParticle.SetActive(false);
+                selectedChar._sr.sortingOrder = 0;
                 selectedChar = bigBlue.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
+                selectedChar._sr.sortingOrder = 1;
                 selectedChar.highlightParticle.SetActive(true);
             }
             else
@@ -273,10 +285,12 @@ public class Sam_Character_Controller : MonoBehaviour
                 selectedChar.heldObject = null;
                 selectedChar.isactive = false;
                 selectedChar.highlightParticle.SetActive(false);
+                selectedChar._sr.sortingOrder = 0;
                 selectedChar = bigBlue.GetComponent<Sam_Character>();
                 followCam.LookAt = selectedChar.transform;
                 followCam.Follow = selectedChar.transform;
                 selectedChar.isactive = true;
+                selectedChar._sr.sortingOrder = 1;
                 selectedChar.highlightParticle.SetActive(true);
             }
 

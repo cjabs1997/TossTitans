@@ -49,6 +49,8 @@ MonoBehaviour:
   facingDirection: 0
   lerpValue: 2
   maxVelocityX: 15
+  moveInputX: 0
+  moveInputY: 0
   characterGrounded: 0
   whatisGround:
     serializedVersion: 2
@@ -57,4 +59,6 @@ MonoBehaviour:
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 512
+  touchingAlly: 0
+  allyCheck: 0.5
   followCam: {fileID: 0}

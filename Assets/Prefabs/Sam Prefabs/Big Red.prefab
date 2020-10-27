@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &41776492129096762
 Transform:
   m_ObjectHideFlags: 0
@@ -4887,7 +4887,7 @@ GameObject:
   - component: {fileID: 41776493792804772}
   m_Layer: 9
   m_Name: Big Red
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4946,9 +4946,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 928160037
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: -1065132715
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1321717953524987088, guid: ec5fd1ce7c40a1849aea8490d01360d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4972,25 +4972,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bfe183de4404643925022737cb9535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 150
   baseSpeed: 100
-  jumpForce: 100
-  dashSpeed: 200
-  throwSpeed: 20
+  jumpForce: 250
+  dashSpeed: 400
+  throwSpeed: 400
   throwpoint: {fileID: 41776492333018929}
   groundCheck: {fileID: 41776492363761999}
-  hasDoubleJump: 1
+  hasDoubleJump: 0
   dashLength: 0.2
   dashTime: 0
-  dashCooler: 0
+  dashCooler: 2
   dashCooldown: 2
-  isactive: 0
+  isactive: 1
   isHeld: 0
   highlightParticle: {fileID: 41776492129096765}
   swing: {fileID: 0}
   isSwinging: 0
   heldObject: {fileID: 0}
-  _rb: {fileID: 0}
+  _rb: {fileID: 41776493792804774}
+  _sr: {fileID: 41776493792804776}
 --- !u!50 &41776493792804774
 Rigidbody2D:
   serializedVersion: 4
@@ -5002,15 +5003,15 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 3.6328125
+  m_UseAutoMass: 0
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &41776493792804772
 BoxCollider2D:

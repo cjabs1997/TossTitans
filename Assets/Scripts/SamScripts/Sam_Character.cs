@@ -27,9 +27,11 @@ public class Sam_Character : MonoBehaviour
     public GameObject heldObject;
 
     public Rigidbody2D _rb;
+    public SpriteRenderer _sr;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
         hasDoubleJump = false;
     }
 

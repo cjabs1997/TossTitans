@@ -12,7 +12,7 @@ public class Sam_Rope : MonoBehaviour
     {
         _lr = GetComponent<LineRenderer>();
         _dj = GetComponent<DistanceJoint2D>();
-        basePoint = _dj.connectedAnchor;
+        
         _lr.SetPosition(1, basePoint);
     }
 
