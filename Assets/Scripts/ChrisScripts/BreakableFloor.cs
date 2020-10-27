@@ -29,7 +29,8 @@ public class BreakableFloor : MonoBehaviour
                 return;
             }
 
-            if((requiresMinSpeed && collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude >= minSpeedToBreak) || !requiresMinSpeed)
+            // If the object that collided meets the speed requirements or doesn't require a speed check then destroy this object.
+            if((requiresMinSpeed && Mathf.Abs(collision.relativeVelocity.magnitude) >= minSpeedToBreak) || !requiresMinSpeed) // Not sure if the abs check is necessary but leaving it in just in case.
             {
                 // If we want to have some particles spawn or camera shake, we could do that here...
                 Destroy(this.gameObject);

@@ -12,6 +12,8 @@ using UnityEngine;
 public class InterableObject : ScriptableObject
 {
     [Tooltip("The InteractableObjects with which this object can interact with. Allows us to make objects in the world that are only interactable " +
-        "with certain objects/characters (ring of fire only lets red through) or while those characters are in certain states (ice slam breaks floor).")]
+        "with certain objects/characters (ring of fire only lets red through) or while those characters are in certain states (ice slam breaks floor)." +
+        "The burden should be placed on the object, not the thing interacting with it. For example a button that can only be interacted with by BigRed should" +
+        "have an InteractableObject with BigRed in its InteractsWith list.")]
     public List<InterableObject> interactsWith = new List<InterableObject>();
 }
