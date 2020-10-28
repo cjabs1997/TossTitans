@@ -128,7 +128,6 @@ public class KinematicObject : MonoBehaviour
         IsGrounded = false;
 
         var deltaPosition = velocity * Time.deltaTime;
-        //Debug.Log(deltaPosition);
 
         var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
@@ -167,6 +166,8 @@ public class KinematicObject : MonoBehaviour
                 }
                 if (IsGrounded)
                 {
+
+                    
                     //how much of our velocity aligns with surface normal?
                     var projection = Vector2.Dot(velocity, currentNormal);
                     if (projection < 0)
