@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef339cb1511393b44bcda40c619a4264, type: 3}
-  m_Name: IceBreakableFloor
+  m_Name: GenericInteractable
   m_EditorClassIdentifier: 
   interactsWith:
+  - {fileID: 11400000, guid: 92ea902109a6900459284e07dd6dd93d, type: 2}
   - {fileID: 11400000, guid: 4084b75aa9799524b885bd832460c104, type: 2}
+  - {fileID: 11400000, guid: aa037fe5bad08ea46a71ebf9d9a4adba, type: 2}
