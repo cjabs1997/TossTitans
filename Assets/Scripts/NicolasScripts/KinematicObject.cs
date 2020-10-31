@@ -16,13 +16,11 @@ public class KinematicObject : MonoBehaviour
     /// <summary>
     /// A custom gravity coefficient applied to this entity.
     /// </summary>
-    public float gravityModifier = 1f;
+    public float gravity = 1f;
 
-    public float groundControl= 250;
+    public float groundControl = 250;
 
     public float aerialControl = 50;
-
-    public float maxSpeed = 10;
 
     /// <summary>
     /// The current velocity of the entity.
@@ -109,7 +107,7 @@ public class KinematicObject : MonoBehaviour
     {
         if (targetVelocity.y == 0)
         {
-            velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+            velocity += Vector2.down * gravity * Time.deltaTime;        
         }
         else
         {
@@ -127,24 +125,29 @@ public class KinematicObject : MonoBehaviour
             velocity.x = Mathf.Max(targetVelocity.x, velocity.x - control * Time.deltaTime);
         }
 
-        var velocityPlatform = Vector2.zero;
+        float velocityPlatform = 0;
+        float y = 0;
         
         if(IsGrounded)
         {
-            velocityPlatform = groundBody.velocity;
+            velocityPlatform = groundBody.velocity.x;
+            if (groundBody.velocity.y < 0)
+            {
+                y = groundBody.velocity.y * Time.deltaTime - 0.1f;
+            }
         }
 
         IsGrounded = false;
-
+        
         var deltaPosition = (velocity)* Time.deltaTime;
 
         var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-        var move = moveAlongGround * deltaPosition.x + (velocityPlatform.x * Vector2.right * Time.deltaTime);
+        var move = moveAlongGround * deltaPosition.x + (velocityPlatform * Vector2.right * Time.deltaTime);
 
         PerformMovement(move, false);
 
-        move = Vector2.up * deltaPosition.y;
+        move = Vector2.up * (deltaPosition.y + y);
 
         PerformMovement(move, true);
     }
