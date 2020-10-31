@@ -16,13 +16,11 @@ public class KinematicObject : MonoBehaviour
     /// <summary>
     /// A custom gravity coefficient applied to this entity.
     /// </summary>
-    public float gravityModifier = 1f;
+    public float gravity = 1f;
 
-    public float groundControl= 250;
+    public float groundControl = 250;
 
     public float aerialControl = 50;
-
-    public float maxSpeed = 10;
 
     /// <summary>
     /// The current velocity of the entity.
@@ -42,7 +40,9 @@ public class KinematicObject : MonoBehaviour
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
 
     protected const float minMoveDistance = 0.001f;
-    protected const float shellRadius = 0.01f;
+    protected const float shellRadius = 0.1f;
+
+    Rigidbody2D groundBody;
 
 
     /// <summary>
@@ -107,7 +107,7 @@ public class KinematicObject : MonoBehaviour
     {
         if (targetVelocity.y == 0)
         {
-            velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+            velocity += Vector2.down * gravity * Time.deltaTime;        
         }
         else
         {
@@ -125,21 +125,31 @@ public class KinematicObject : MonoBehaviour
             velocity.x = Mathf.Max(targetVelocity.x, velocity.x - control * Time.deltaTime);
         }
 
-        IsGrounded = false;
+        float velocityPlatform = 0;
+        float y = 0;
+        
+        if(IsGrounded)
+        {
+            velocityPlatform = groundBody.velocity.x;
+            if (groundBody.velocity.y < 0)
+            {
+                y = groundBody.velocity.y * Time.deltaTime - 0.1f;
+            }
+        }
 
-        var deltaPosition = velocity * Time.deltaTime;
-        //Debug.Log(deltaPosition);
+        IsGrounded = false;
+        
+        var deltaPosition = (velocity)* Time.deltaTime;
 
         var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-        var move = moveAlongGround * deltaPosition.x;
+        var move = moveAlongGround * deltaPosition.x + (velocityPlatform * Vector2.right * Time.deltaTime);
 
         PerformMovement(move, false);
 
-        move = Vector2.up * deltaPosition.y;
+        move = Vector2.up * (deltaPosition.y + y);
 
         PerformMovement(move, true);
-
     }
 
     void PerformMovement(Vector2 move, bool yMovement)
@@ -153,7 +163,7 @@ public class KinematicObject : MonoBehaviour
             for (var i = 0; i < count; i++)
             {
                 var currentNormal = hitBuffer[i].normal;
-
+                
                 //is this surface flat enough to land on?
                 if (currentNormal.y > minGroundNormalY)
                 {
@@ -167,6 +177,8 @@ public class KinematicObject : MonoBehaviour
                 }
                 if (IsGrounded)
                 {
+                    groundBody = hitBuffer[i].rigidbody;                  
+                    
                     //how much of our velocity aligns with surface normal?
                     var projection = Vector2.Dot(velocity, currentNormal);
                     if (projection < 0)
@@ -174,16 +186,34 @@ public class KinematicObject : MonoBehaviour
                         //slower velocity if moving against the normal (up a hill).
                         velocity = velocity - projection * currentNormal;
                     }
+
+
                 }
                 else
                 {
                     //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
-                    velocity.x *= 0;
-                   // velocity.y = Mathf.Min(velocity.y, 0);
+                    if (yMovement)
+                    {
+                        velocity.y = Mathf.Min(velocity.y, 0);
+                    }
+                    else
+                    {
+                         velocity.x *= 0;
+                    }
+                    
                 }
                 //remove shellDistance from actual move distance.
                 var modifiedDistance = hitBuffer[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
+                if (yMovement)
+                {
+                    distance += hitBuffer[i].rigidbody.velocity.y * Time.deltaTime;
+                }
+                else
+                {
+                    distance += hitBuffer[i].rigidbody.velocity.x * Time.deltaTime;
+                }
+
             }
         }
         body.position = body.position + move.normalized * distance;

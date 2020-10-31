@@ -5,27 +5,30 @@ using UnityEngine;
 
 public class CharacterController : KinematicObject
 {
+    public bool isActive;
     public float runSpeed = 10;
     public float jumpSpeed = 20;
-    public float dashSpeed = 25;
     public float throwSpeed = 30;
-    public Transform groundCheck;
-    public bool hasDoubleJump;
-
+    public bool hasGrapplingHook;
+    public float dashSpeed = 25;
+    public float dashLength = 0.5f;
+    public float dashCooldown = 5f;
     public GameObject ally;
 
     public GameObject highlightParticle;
-
-    public bool isActive;
 
     public LayerMask whatisPlayer;
 
     public CinemachineVirtualCamera followCam;
 
-    public Collider2D collider2d;
-    bool dash;
+
+    public float dashTimer = 10000;
+    bool hasDoubleJump;
+    public bool dash;
+    public Vector2 dashDirection;
     bool jump;
     bool thrown;
+    bool isHeld;
     Vector2 move;
     SpriteRenderer spriteRenderer;
 
@@ -51,7 +54,6 @@ public class CharacterController : KinematicObject
 
     void Awake()
     {
-        collider2d = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -68,6 +70,16 @@ public class CharacterController : KinematicObject
             {
                 hasDoubleJump = true;
             }
+            if (!hasGrapplingHook)
+            {
+                dashTimer += Time.deltaTime;
+                if (dashLength <= dashTimer)
+                {
+                    dash = false;
+                }
+            }
+
+
             move.x = Input.GetAxis("Horizontal");
             move.y = Input.GetAxis("Vertical");
             if (IsGrounded && Input.GetButtonDown("Jump"))
@@ -81,14 +93,28 @@ public class CharacterController : KinematicObject
             }
             else if (Input.GetButtonDown("Grab/Throw") && CanBeThrown())
             {
+                isHeld = true;
+            }
+            else if (Input.GetButtonUp("Grab/Throw") && isHeld)
+            {
                 thrown = true;
+                isHeld = false;
+                hasDoubleJump = true;
             }
             else if (Input.GetButtonDown("Dash"))
             {
-                dash = true;
-                jump = false;
+                if(hasGrapplingHook)
+                {
+                    dash = true;
+                }
+                else if (dashTimer >= dashCooldown)
+                {
+                    dash = true;
+                    dashTimer = 0;
+                    dashDirection = (Vector2)Vector3.Normalize(move);
+                }
             }
-            else if (Input.GetButtonUp("Dash"))
+            else if (Input.GetButtonUp("Dash") && hasGrapplingHook)
             {
                 dash = false;
             }
@@ -105,17 +131,27 @@ public class CharacterController : KinematicObject
         targetVelocity = Vector2.zero;
         if (dash)
         {
-            Vector3 distance = ally.transform.position - transform.position + new Vector3(0, 0.5f, 0);
-            if (distance.magnitude > 1)
+            if (hasGrapplingHook)
             {
-                velocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
-                targetVelocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
-                return;
+                Vector3 distance = ally.transform.position - transform.position + new Vector3(0, 0.5f, 0);
+                if (distance.magnitude > 1)
+                {
+                    velocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
+                    targetVelocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
+                    return;
+                }
+                else
+                {
+                    dash = false;
+                }
             }
             else
             {
-                dash = false;
+                velocity = dashDirection * dashSpeed;
+                targetVelocity = dashDirection * dashSpeed;
             }
+
+
         }
         if (jump)
         {
@@ -130,6 +166,14 @@ public class CharacterController : KinematicObject
             velocity = move * throwSpeed;
             targetVelocity = move * throwSpeed;
             thrown = false;
+            return;
+        }
+
+        if (isHeld)
+        {
+            Vector3 distance = ally.transform.position - transform.position + new Vector3(0, 0.5f, 0);
+            velocity = distance * 10f;
+            targetVelocity = distance * 10f;
             return;
         }
 
