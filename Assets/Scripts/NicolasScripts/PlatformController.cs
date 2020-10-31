@@ -9,7 +9,12 @@ public class PlatformController : MonoBehaviour
     public float movementDuration;
     public float timer;
     bool direction;
-    Vector3 velocity;
+    Rigidbody2D body;
+
+    void Start()
+    {
+        body = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
@@ -17,13 +22,12 @@ public class PlatformController : MonoBehaviour
         if (timer > movementDuration)
         {
             direction = false;
-            velocity = -startingVelocity;
+            body.velocity = -startingVelocity;
         }
         if (timer < 0)
         {
             direction = true;
-            velocity = startingVelocity;
+            body.velocity = startingVelocity;
         }
-        transform.position += velocity * Time.deltaTime;
     }
 }

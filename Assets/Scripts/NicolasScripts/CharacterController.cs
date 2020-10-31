@@ -88,6 +88,7 @@ public class CharacterController : KinematicObject
             {
                 thrown = true;
                 isHeld = false;
+                hasDoubleJump = true;
             }
             else if (Input.GetButtonDown("Dash"))
             {

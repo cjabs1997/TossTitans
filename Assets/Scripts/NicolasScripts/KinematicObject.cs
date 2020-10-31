@@ -42,7 +42,9 @@ public class KinematicObject : MonoBehaviour
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
 
     protected const float minMoveDistance = 0.001f;
-    protected const float shellRadius = 0.01f;
+    protected const float shellRadius = 0.1f;
+
+    Rigidbody2D groundBody;
 
 
     /// <summary>
@@ -125,20 +127,26 @@ public class KinematicObject : MonoBehaviour
             velocity.x = Mathf.Max(targetVelocity.x, velocity.x - control * Time.deltaTime);
         }
 
+        var velocityPlatform = Vector2.zero;
+        
+        if(IsGrounded)
+        {
+            velocityPlatform = groundBody.velocity;
+        }
+
         IsGrounded = false;
 
-        var deltaPosition = velocity * Time.deltaTime;
+        var deltaPosition = (velocity)* Time.deltaTime;
 
         var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-        var move = moveAlongGround * deltaPosition.x;
+        var move = moveAlongGround * deltaPosition.x + (velocityPlatform.x * Vector2.right * Time.deltaTime);
 
         PerformMovement(move, false);
 
         move = Vector2.up * deltaPosition.y;
 
         PerformMovement(move, true);
-
     }
 
     void PerformMovement(Vector2 move, bool yMovement)
@@ -152,7 +160,7 @@ public class KinematicObject : MonoBehaviour
             for (var i = 0; i < count; i++)
             {
                 var currentNormal = hitBuffer[i].normal;
-
+                
                 //is this surface flat enough to land on?
                 if (currentNormal.y > minGroundNormalY)
                 {
@@ -166,7 +174,7 @@ public class KinematicObject : MonoBehaviour
                 }
                 if (IsGrounded)
                 {
-
+                    groundBody = hitBuffer[i].rigidbody;                  
                     
                     //how much of our velocity aligns with surface normal?
                     var projection = Vector2.Dot(velocity, currentNormal);
@@ -175,16 +183,34 @@ public class KinematicObject : MonoBehaviour
                         //slower velocity if moving against the normal (up a hill).
                         velocity = velocity - projection * currentNormal;
                     }
+
+
                 }
                 else
                 {
                     //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
-                    velocity.x *= 0;
-                   // velocity.y = Mathf.Min(velocity.y, 0);
+                    if (yMovement)
+                    {
+                        velocity.y = Mathf.Min(velocity.y, 0);
+                    }
+                    else
+                    {
+                         velocity.x *= 0;
+                    }
+                    
                 }
                 //remove shellDistance from actual move distance.
                 var modifiedDistance = hitBuffer[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
+                if (yMovement)
+                {
+                    distance += hitBuffer[i].rigidbody.velocity.y * Time.deltaTime;
+                }
+                else
+                {
+                    distance += hitBuffer[i].rigidbody.velocity.x * Time.deltaTime;
+                }
+
             }
         }
         body.position = body.position + move.normalized * distance;
