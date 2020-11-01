@@ -152,6 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519394442}
   - component: {fileID: 519394443}
+  - component: {fileID: 519394444}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -186,6 +187,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpCanvas: {fileID: 1402742475}
+--- !u!82 &519394444
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519394441}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ead37a74f992eb34288ea9a69410f341, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &622277384
 GameObject:
   m_ObjectHideFlags: 0
@@ -11714,7 +11811,6 @@ GameObject:
   - component: {fileID: 656893193}
   - component: {fileID: 656893195}
   - component: {fileID: 656893194}
-  - component: {fileID: 656893196}
   m_Layer: 5
   m_Name: ScriptPopUp
   m_TagString: Untagged
@@ -11779,20 +11875,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656893192}
   m_CullTransparentMesh: 0
---- !u!114 &656893196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656893192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e59f10f07d67eb44a6e3e50478f14b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseController: {fileID: 519394441}
-  whichPopUp: {fileID: 0}
 --- !u!1 &836572871
 GameObject:
   m_ObjectHideFlags: 0
@@ -22175,15 +22257,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892614, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_Color.r
-      value: 0.15686272
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892614, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_Color.g
-      value: 0.30090028
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892614, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_Color.b
-      value: 0.81960785
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892665, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22191,7 +22273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892665, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.99
+      value: 4.14
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892665, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22368,13 +22450,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial Page
       objectReference: {fileID: 0}
+    - target: {fileID: 5045971121598892612, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045971121598892614, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892665, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.06956482
+      value: 3.88
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892665, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5743549
+      value: -2.78
       objectReference: {fileID: 0}
     - target: {fileID: 5045971121598892665, guid: 16fd15cac67ffc240995c1e7d1913c85, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22597,7 +22687,6 @@ GameObject:
   - component: {fileID: 2136534853}
   - component: {fileID: 2136534856}
   - component: {fileID: 2136534855}
-  - component: {fileID: 2136534854}
   m_Layer: 5
   m_Name: ScriptPopUp2
   m_TagString: Untagged
@@ -22624,20 +22713,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 541, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2136534854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136534852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e59f10f07d67eb44a6e3e50478f14b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseController: {fileID: 519394441}
-  whichPopUp: {fileID: 0}
 --- !u!114 &2136534855
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,8 +17,8 @@ public class PausePickup : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             pauseController.SendMessage("Pause", whichPopUp);
-        }
 
-        Destroy(this.gameObject);
+            Destroy(this.gameObject);
+        }
     }
 }
