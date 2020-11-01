@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
+    public Activator activator;
     public Vector3 startingVelocity;
     public float movementDuration;
     public float timer;
@@ -18,16 +19,22 @@ public class PlatformController : MonoBehaviour
 
     void Update()
     {
-        timer += direction ? Time.deltaTime : -Time.deltaTime;
-        if (timer > movementDuration)
+        if (activator == null || activator.isActive)
         {
-            direction = false;
-            body.velocity = -startingVelocity;
+            timer += direction ? Time.deltaTime : -Time.deltaTime;
+            if (timer > movementDuration)
+            {
+                direction = false;
+            }
+            if (timer < 0)
+            {
+                direction = true;
+            }
+             body.velocity = direction ? startingVelocity : -startingVelocity;
         }
-        if (timer < 0)
+        else
         {
-            direction = true;
-            body.velocity = startingVelocity;
+             body.velocity = Vector2.zero;
         }
     }
 }
