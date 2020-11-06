@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// Most of the stuff here is just a quick demo of some simple interactions and how the tools can be used.
@@ -27,6 +28,8 @@ public class CharacterGate : MonoBehaviour
         "demo of the things we could do.")]
     public Vector2 killPosition;
 
+    public Animator ScreenAnimator;
+
 
     // This should probably be moved to a ScriptableObject in the future if these are something we are going to frequently use.
     public enum Type
@@ -37,10 +40,12 @@ public class CharacterGate : MonoBehaviour
     }
 
     private Interactable m_Interactable;
+    private CinemachineImpulseSource m_CinemachineImpulseSource;
 
     private void Awake()
     {
         m_Interactable = this.GetComponent<Interactable>();
+        m_CinemachineImpulseSource = this.GetComponent<CinemachineImpulseSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -86,6 +91,8 @@ public class CharacterGate : MonoBehaviour
     // Simply just moves the character to the given position for now.
     private void KillGateAction(Collider2D collision)
     {
+        m_CinemachineImpulseSource.GenerateImpulse();
+        ScreenAnimator.SetTrigger("FlashRed");
         collision.attachedRigidbody.Sleep();
         collision.gameObject.transform.position = killPosition;
         collision.attachedRigidbody.WakeUp();

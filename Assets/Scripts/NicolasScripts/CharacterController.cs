@@ -230,4 +230,14 @@ public class CharacterController : KinematicObject
             highlightParticle.SetActive(false);
         }
     }
+
+    public bool GetHasDoubleJump()
+    {
+        return hasDoubleJump;
+    }
+
+    public bool GetDash()
+    {
+        return dash;
+    }
 }
