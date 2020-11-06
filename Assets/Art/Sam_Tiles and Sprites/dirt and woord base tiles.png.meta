@@ -1,7 +1,103 @@
 fileFormatVersion: 2
 guid: 6d7c7e63edfa967429c5bc11fd000634
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7282111774456985971
+    second: dirt and woord base tiles_0
+  - first:
+      213: 1906563195663314957
+    second: dirt and woord base tiles_1
+  - first:
+      213: -1429500375788504705
+    second: dirt and woord base tiles_2
+  - first:
+      213: -8099702708893305571
+    second: dirt and woord base tiles_3
+  - first:
+      213: 5999357970998893227
+    second: dirt and woord base tiles_4
+  - first:
+      213: -1759173411583890578
+    second: dirt and woord base tiles_5
+  - first:
+      213: 8083310799393200143
+    second: dirt and woord base tiles_6
+  - first:
+      213: -6536855284395510852
+    second: dirt and woord base tiles_7
+  - first:
+      213: -6320564021574120414
+    second: dirt and woord base tiles_8
+  - first:
+      213: 1042184407535562944
+    second: dirt and woord base tiles_9
+  - first:
+      213: 3169112061360220912
+    second: dirt and woord base tiles_10
+  - first:
+      213: -2584478051210485731
+    second: dirt and woord base tiles_0
+  - first:
+      213: -3398578892678797373
+    second: dirt and woord base tiles_1
+  - first:
+      213: 6036426216771280419
+    second: dirt and woord base tiles_2
+  - first:
+      213: -3485671551599301070
+    second: dirt and woord base tiles_3
+  - first:
+      213: -3044566141345663202
+    second: dirt and woord base tiles_4
+  - first:
+      213: 8523117729673549866
+    second: dirt and woord base tiles_5
+  - first:
+      213: 1630761620618255516
+    second: dirt and woord base tiles_6
+  - first:
+      213: 4074391027688166301
+    second: dirt and woord base tiles_7
+  - first:
+      213: 9025141987250120753
+    second: dirt and woord base tiles_8
+  - first:
+      213: 6573294426108426702
+    second: dirt and woord base tiles_9
+  - first:
+      213: 2928024982826178068
+    second: dirt and woord base tiles_10
+  - first:
+      213: 1584797253821761379
+    second: dirt and woord base tiles_11
+  - first:
+      213: -3633957639820932477
+    second: dirt and woord base tiles_12
+  - first:
+      213: -7832304726471787823
+    second: dirt and woord base tiles_13
+  - first:
+      213: 8740017464689082533
+    second: dirt and woord base tiles_14
+  - first:
+      213: 8753247815897681405
+    second: dirt and woord base tiles_15
+  - first:
+      213: -213448674637705420
+    second: dirt and woord base tiles_16
+  - first:
+      213: -650799211634065355
+    second: dirt and woord base tiles_17
+  - first:
+      213: 4491042887249609147
+    second: dirt and woord base tiles_18
+  - first:
+      213: -793729177470726001
+    second: dirt and woord base tiles_19
+  - first:
+      213: 8925305051520912437
+    second: dirt and woord base tiles_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,7 +128,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -41,12 +137,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -73,9 +169,315 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: dirt and woord base tiles_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d102ec3d7e6122cd0800000000000000
+      internalID: -2584478051210485731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c76db8e082d5d0d0800000000000000
+      internalID: -3398578892678797373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ed18b69a1b5c350800000000000000
+      internalID: 6036426216771280419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23e2d33113860afc0800000000000000
+      internalID: -3485671551599301070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e17f8e9a9378fb5d0800000000000000
+      internalID: -3044566141345663202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a289600fa62384670800000000000000
+      internalID: 8523117729673549866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9c9a46cd01a1a610800000000000000
+      internalID: 1630761620618255516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9354697d052b8830800000000000000
+      internalID: 4074391027688166301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_8
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 138a185f1debf3d70800000000000000
+      internalID: 9025141987250120753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec97f382478093b50800000000000000
+      internalID: 6573294426108426702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416d2d2653f62a820800000000000000
+      internalID: 2928024982826178068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3678f0ba4b45ef510800000000000000
+      internalID: 1584797253821761379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a08a5b7c6919dc0800000000000000
+      internalID: -3633957639820932477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt and woord base tiles_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da390e39501e4390800000000000000
+      internalID: -7832304726471787823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
