@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activator: {fileID: 536959035}
-  startingVelocity: {x: 0, y: 2, z: 0}
-  movementDuration: 12
+  startingVelocity: {x: 0, y: 6, z: 0}
+  movementDuration: 4
   timer: 0
 --- !u!61 &23928020
 BoxCollider2D:
@@ -2385,7 +2385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228857104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: -2.2, z: -10}
+  m_LocalPosition: {x: -7.93, y: -2.88, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12275,6 +12275,7 @@ GameObject:
   - component: {fileID: 756289384}
   - component: {fileID: 756289383}
   - component: {fileID: 756289388}
+  - component: {fileID: 756289389}
   m_Layer: 9
   m_Name: Big Blue
   m_TagString: Untagged
@@ -12295,15 +12296,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravity: 40
+  gravity: 50
   groundControl: 100
   aerialControl: 10
   velocity: {x: 0, y: 0}
+  allowDoubleJump: 1
+  allowDash: 1
+  hasGrapplingHook: 1
+  allowIceTransform: 1
+  allowJumpThrouhHoops: 0
+  allowFly: 0
   isActive: 0
   runSpeed: 10
-  jumpSpeed: 12
+  jumpSpeed: 14
   throwSpeed: 25
-  hasGrapplingHook: 1
   dashSpeed: 40
   dashLength: 0.5
   dashCooldown: 5
@@ -12314,7 +12320,6 @@ MonoBehaviour:
     m_Bits: 512
   followCam: {fileID: 2117165861}
   dashTimer: 0
-  dash: 0
   dashDirection: {x: 0, y: 0}
 --- !u!61 &756289384
 BoxCollider2D:
@@ -12422,7 +12427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756289382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.8, y: -3.4, z: 0}
+  m_LocalPosition: {x: -10, y: -3.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 252275337}
@@ -12444,6 +12449,25 @@ MonoBehaviour:
   startingState: {fileID: 11400000, guid: 92ea902109a6900459284e07dd6dd93d, type: 2}
   defaultState: {fileID: 11400000, guid: 92ea902109a6900459284e07dd6dd93d, type: 2}
   currentState: {fileID: 0}
+--- !u!95 &756289389
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756289382}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7e77674c247b7045a413a12b14c5795, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &820187514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12530,7 +12554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928321361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: -3.2, z: 0}
+  m_LocalPosition: {x: -7.93, y: -3.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 724303600}
@@ -12554,11 +12578,16 @@ MonoBehaviour:
   groundControl: 250
   aerialControl: 50
   velocity: {x: 0, y: 0}
+  allowDoubleJump: 1
+  allowDash: 1
+  hasGrapplingHook: 0
+  allowIceTransform: 0
+  allowJumpThrouhHoops: 1
+  allowFly: 0
   isActive: 1
   runSpeed: 10
   jumpSpeed: 14
   throwSpeed: 30
-  hasGrapplingHook: 0
   dashSpeed: 20
   dashLength: 0.2
   dashCooldown: 2
@@ -12569,7 +12598,6 @@ MonoBehaviour:
     m_Bits: 512
   followCam: {fileID: 2117165861}
   dashTimer: 0
-  dash: 0
   dashDirection: {x: 0, y: 0}
 --- !u!61 &928321364
 BoxCollider2D:
@@ -50015,7 +50043,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117165860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: -2.2, z: -10}
+  m_LocalPosition: {x: -7.93, y: -2.88, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 567332590}
