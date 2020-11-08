@@ -5,32 +5,36 @@ using UnityEngine;
 
 public class CharacterController : KinematicObject
 {
+    public bool allowDoubleJump ;
+    public bool allowDash;
+    public bool hasGrapplingHook;
+    public bool allowIceTransform;
+    public bool allowJumpThrouhHoops;
+    public bool allowFly;
     public bool isActive;
     public float runSpeed = 10;
     public float jumpSpeed = 20;
     public float throwSpeed = 30;
-    public bool hasGrapplingHook;
     public float dashSpeed = 25;
     public float dashLength = 0.5f;
     public float dashCooldown = 5f;
     public GameObject ally;
-
     public GameObject highlightParticle;
-
     public LayerMask whatisPlayer;
-
     public CinemachineVirtualCamera followCam;
 
-
-    public float dashTimer = 10000;
+    public float dashTimer = 1000000;
     bool hasDoubleJump;
-    public bool dash;
+    bool dash;
     public Vector2 dashDirection;
     bool jump;
     bool thrown;
     bool isHeld;
+    bool isIce;
     Vector2 move;
-    SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer; 
+    Animator animator;
+    Interactable interactable;
 
     protected override void Start()
     {
@@ -55,12 +59,15 @@ public class CharacterController : KinematicObject
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = this.GetComponent<Animator>();
+        interactable = this.GetComponent<Interactable>();
     }
 
     protected override void Update()
     {
         if (Input.GetButtonDown("Swap/Throw"))
         {
+            isHeld = allowFly;
             isActive = !isActive;
             ActivateCharacter();
         }
@@ -79,14 +86,13 @@ public class CharacterController : KinematicObject
                 }
             }
 
-
             move.x = Input.GetAxis("Horizontal");
             move.y = Input.GetAxis("Vertical");
-            if (IsGrounded && Input.GetButtonDown("Jump"))
+            if (IsGrounded && Input.GetButtonDown("Jump") && !isIce)
             {
                 jump = true;
             }
-            else if (hasDoubleJump && Input.GetButtonDown("Jump"))
+            else if (allowDoubleJump && hasDoubleJump && Input.GetButtonDown("Jump") && !isIce)
             {
                 jump = true;
                 hasDoubleJump = false;
@@ -101,7 +107,7 @@ public class CharacterController : KinematicObject
                 isHeld = false;
                 hasDoubleJump = true;
             }
-            else if (Input.GetButtonDown("Dash"))
+            else if (allowDash && Input.GetButtonDown("Dash"))
             {
                 if(hasGrapplingHook)
                 {
@@ -114,9 +120,22 @@ public class CharacterController : KinematicObject
                     dashDirection = (Vector2)Vector3.Normalize(move);
                 }
             }
-            else if (Input.GetButtonUp("Dash") && hasGrapplingHook)
+            else if (allowDash && Input.GetButtonUp("Dash") && hasGrapplingHook)
             {
                 dash = false;
+            }
+            else if (Input.GetButtonDown("Ice Transform") && allowIceTransform)
+            {
+                if (isIce)
+                {
+                    isIce = false;
+                    gravity /= 4;
+                }
+                else
+                {
+                    isIce = true;
+                    gravity *= 4;
+                }
             }
         }
         else
@@ -129,12 +148,25 @@ public class CharacterController : KinematicObject
     protected override void ComputeVelocity()
     {
         targetVelocity = Vector2.zero;
+        if (isIce)
+        {
+            velocity.x = 0;
+            targetVelocity.x = 0;
+            return;
+        }
         if (dash)
         {
             if (hasGrapplingHook)
             {
                 Vector3 distance = ally.transform.position - transform.position + new Vector3(0, 0.5f, 0);
-                if (distance.magnitude > 1)
+                Vector2 direction =  (Vector2)Vector3.Normalize(distance);
+                var count = body.Cast(direction, contactFilter, hitBuffer, distance.magnitude);
+                bool hasSight = true;
+                for (var i = 0; i < count; i++)
+                {
+                    hasSight = false;
+                }
+                if (hasSight && distance.magnitude > 1)
                 {
                     velocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
                     targetVelocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
@@ -197,5 +229,20 @@ public class CharacterController : KinematicObject
         {
             highlightParticle.SetActive(false);
         }
+    }
+
+    public bool GetHasDoubleJump()
+    {
+        return hasDoubleJump;
+    }
+
+    public bool GetDash()
+    {
+        return dash;
+    }
+
+    public bool GetIsIce()
+    {
+        return isIce;
     }
 }
