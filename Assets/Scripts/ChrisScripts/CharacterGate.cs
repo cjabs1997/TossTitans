@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// Most of the stuff here is just a quick demo of some simple interactions and how the tools can be used.
@@ -75,11 +76,15 @@ public class CharacterGate : MonoBehaviour
         }
     }
 
+    // Will need editing to work with new controller...
+    // Should be avoided for now.
     private void BlockGateAction(Collider2D collision)
     {
         collision.attachedRigidbody.AddForce(collision.attachedRigidbody.velocity.normalized * -launchForce, ForceMode2D.Impulse);
     }
 
+    // Will need editing to work with new controller...
+    // Should be avoided for now.
     private void LaunchGateAction(Collider2D collision)
     {
         var player = collision.gameObject.GetComponent<CharacterController>();
@@ -94,6 +99,7 @@ public class CharacterGate : MonoBehaviour
     // Simply just moves the character to the given position for now.
     private void KillGateAction(Collider2D collision)
     {
+<<<<<<< HEAD
         var player = collision.gameObject.GetComponent<CharacterController>();
         if (player != null)
         {
@@ -101,5 +107,16 @@ public class CharacterGate : MonoBehaviour
             ScreenAnimator.SetTrigger("FlashRed");
             player.Kill();
         }
+=======
+        m_CinemachineImpulseSource.GenerateImpulse();
+        collision.attachedRigidbody.velocity = Vector2.zero;
+        if(ScreenAnimator)
+            ScreenAnimator.SetTrigger("FlashRed");
+
+        collision.attachedRigidbody.Sleep();
+        collision.gameObject.transform.position = killPosition;
+        collision.attachedRigidbody.WakeUp();
+        
+>>>>>>> origin
     }
 }
