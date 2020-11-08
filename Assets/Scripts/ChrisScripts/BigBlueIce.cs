@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// NO LONGER IN USE
+/// </summary>
 [RequireComponent(typeof(Interactable))]
 public class BigBlueIce : MonoBehaviour
 {
@@ -16,14 +19,14 @@ public class BigBlueIce : MonoBehaviour
 
     private Animator m_Animator;
     private Interactable m_Interactable;
-    private Sam_Character m_SamCharacter;
+    private CharacterController m_CharacterController;
     private Rigidbody2D m_Rigidbody2D;
 
     private void Awake()
     {
         m_Animator = this.GetComponent<Animator>();
         m_Interactable = this.GetComponent<Interactable>();
-        m_SamCharacter = this.GetComponent<Sam_Character>();
+        m_CharacterController = this.GetComponent<CharacterController>();
         m_Rigidbody2D = this.GetComponent<Rigidbody2D>();
     }
 
@@ -31,12 +34,13 @@ public class BigBlueIce : MonoBehaviour
     {
         // Character is not the active one, ignore any commands. Might also need to add additional checks here for other conditions like swinging or grounded.
         // Moving this to something that disables this script in the future so we can stop running update checks would be preferred.
-        if(!m_SamCharacter.isactive)
+        if(!m_CharacterController.isActive)
         {
             return;
         }
 
-        if(Input.GetKeyDown(abilityKey))
+        // If we press the button and are able to transform
+        if(Input.GetButtonDown("Ice Transform") && m_CharacterController.allowIceTransform)
         {
             PerformAction();
         }
@@ -83,7 +87,7 @@ public class BigBlueIce : MonoBehaviour
     private void PerformAction()
     {
         // If we are currently an ice block we want to return to normal
-        if(m_Interactable.GetState() == iceInteractionState)
+        if(m_CharacterController.GetIsIce())
         {
             ReturnFromIce();
         }
