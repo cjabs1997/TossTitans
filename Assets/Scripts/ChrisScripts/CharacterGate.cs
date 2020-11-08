@@ -75,11 +75,15 @@ public class CharacterGate : MonoBehaviour
         }
     }
 
+    // Will need editing to work with new controller...
+    // Should be avoided for now.
     private void BlockGateAction(Collider2D collision)
     {
         collision.attachedRigidbody.AddForce(collision.attachedRigidbody.velocity.normalized * -launchForce, ForceMode2D.Impulse);
     }
 
+    // Will need editing to work with new controller...
+    // Should be avoided for now.
     private void LaunchGateAction(Collider2D collision)
     {
         float leftOrRight = Vector2.Dot(collision.attachedRigidbody.velocity.normalized, Vector2.right);
@@ -92,10 +96,13 @@ public class CharacterGate : MonoBehaviour
     private void KillGateAction(Collider2D collision)
     {
         m_CinemachineImpulseSource.GenerateImpulse();
-        ScreenAnimator.SetTrigger("FlashRed");
+        collision.attachedRigidbody.velocity = Vector2.zero;
+        if(ScreenAnimator)
+            ScreenAnimator.SetTrigger("FlashRed");
+
         collision.attachedRigidbody.Sleep();
         collision.gameObject.transform.position = killPosition;
         collision.attachedRigidbody.WakeUp();
-        collision.attachedRigidbody.velocity = Vector2.zero;
+        
     }
 }

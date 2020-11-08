@@ -7468,7 +7468,7 @@ GameObject:
   - component: {fileID: 676840959}
   - component: {fileID: 676840961}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ScreenFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12407,7 +12407,7 @@ MonoBehaviour:
   allowDoubleJump: 1
   allowDash: 1
   hasGrapplingHook: 1
-  allowIceTransform: 0
+  allowIceTransform: 1
   allowJumpThrouhHoops: 0
   allowFly: 0
   isActive: 0
@@ -12676,6 +12676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f135fe810a4ee734a8016ed946d60da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityInteractionState: {fileID: 11400000, guid: 4ea39a39d00e1924393593ea83563024, type: 2}
 --- !u!1001 &820187514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13054,6 +13055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f135fe810a4ee734a8016ed946d60da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityInteractionState: {fileID: 0}
 --- !u!1 &1297975959
 GameObject:
   m_ObjectHideFlags: 0

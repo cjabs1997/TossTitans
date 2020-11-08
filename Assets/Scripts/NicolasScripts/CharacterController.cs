@@ -88,11 +88,11 @@ public class CharacterController : KinematicObject
 
             move.x = Input.GetAxis("Horizontal");
             move.y = Input.GetAxis("Vertical");
-            if (IsGrounded && Input.GetButtonDown("Jump"))
+            if (IsGrounded && Input.GetButtonDown("Jump") && !isIce)
             {
                 jump = true;
             }
-            else if (allowDoubleJump && hasDoubleJump && Input.GetButtonDown("Jump"))
+            else if (allowDoubleJump && hasDoubleJump && Input.GetButtonDown("Jump") && !isIce)
             {
                 jump = true;
                 hasDoubleJump = false;
@@ -239,5 +239,10 @@ public class CharacterController : KinematicObject
     public bool GetDash()
     {
         return dash;
+    }
+
+    public bool GetIsIce()
+    {
+        return isIce;
     }
 }
