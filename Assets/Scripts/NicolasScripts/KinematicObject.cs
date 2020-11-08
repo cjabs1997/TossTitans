@@ -103,6 +103,11 @@ public class KinematicObject : MonoBehaviour
 
     }
 
+    protected virtual bool CanDestroyGround()
+    {
+        return false;
+    }
+
     protected virtual void FixedUpdate()
     {        
         if (targetVelocity.y == 0)
@@ -176,63 +181,70 @@ public class KinematicObject : MonoBehaviour
             var count = body.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
             for (var i = 0; i < count; i++)
             {
-                var currentNormal = hitBuffer[i].normal;
-                
-                //is this surface flat enough to land on?
-                if (currentNormal.y > minGroundNormalY)
+                if (CanDestroyGround() && hitBuffer[i].collider.gameObject.GetComponent<Destroyable>())
                 {
-                    IsGrounded = true;
-                    // if moving up, change the groundNormal to new surface normal.
-                    if (yMovement)
-                    {
-                        groundNormal = currentNormal;
-                        currentNormal.x = 0;
-                    }
-                }
-                if(IsGrounded)
-                {
-                    velocity.y = 0;
-                }
-                if (!IsGrounded)
-                {                             
-                    //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
-                    if (yMovement)
-                    {
-                        velocity.y = Mathf.Min(velocity.y, 0);
-                    }
-                    else
-                    {
-                         velocity.x *= 0;
-                    }    
-                }
-
-                //remove shellDistance from actual move distance.
-                var modifiedDistance = hitBuffer[i].distance - shellRadius;
-                distance = modifiedDistance < distance ? modifiedDistance : distance;
-                if (yMovement)
-                {
-                    if (move.y >= 0)
-                    {
-                        distance += hitBuffer[i].rigidbody.velocity.y * Time.deltaTime;
-                    }
-                    else
-                    {
-                        distance -= hitBuffer[i].rigidbody.velocity.y * Time.deltaTime;
-                    }
+                    Destroy(hitBuffer[i].collider.gameObject);
                 }
                 else
                 {
-                    if (move.x >= 0)
+                     var currentNormal = hitBuffer[i].normal;
+            
+                    //is this surface flat enough to land on?
+                    if (currentNormal.y > minGroundNormalY)
                     {
-                         distance += hitBuffer[i].rigidbody.velocity.x * Time.deltaTime;
+                        IsGrounded = true;
+                        // if moving up, change the groundNormal to new surface normal.
+                        if (yMovement)
+                        {
+                            groundNormal = currentNormal;
+                            currentNormal.x = 0;
+                        }
+                    }
+                    if(IsGrounded)
+                    {
+                        velocity.y = 0;
+                    }
+                    if (!IsGrounded)
+                    {                             
+                        //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
+                        if (yMovement)
+                        {
+                            velocity.y = Mathf.Min(velocity.y, 0);
+                        }
+                        else
+                        {
+                            velocity.x *= 0;
+                        }    
+                    }
+
+                    //remove shellDistance from actual move distance.
+                    var modifiedDistance = hitBuffer[i].distance - shellRadius;
+                    distance = modifiedDistance < distance ? modifiedDistance : distance;
+                    if (yMovement)
+                    {
+                        if (move.y >= 0)
+                        {
+                            distance += hitBuffer[i].rigidbody.velocity.y * Time.deltaTime;
+                        }
+                        else
+                        {
+                            distance -= hitBuffer[i].rigidbody.velocity.y * Time.deltaTime;
+                        }
                     }
                     else
                     {
-                        distance -= hitBuffer[i].rigidbody.velocity.x * Time.deltaTime;
+                        if (move.x >= 0)
+                        {
+                            distance += hitBuffer[i].rigidbody.velocity.x * Time.deltaTime;
+                        }
+                        else
+                        {
+                            distance -= hitBuffer[i].rigidbody.velocity.x * Time.deltaTime;
+                        }
+                    
                     }
-                   
                 }
-
+          
             }
         }
         body.position = body.position + move.normalized * distance;

@@ -27,7 +27,7 @@ public class CharacterGate : MonoBehaviour
 
     [Tooltip("Where the object gets moved if the gate 'kills' them, used in KillGates. We can change the interaction here to do what we want but this is just a simple " +
         "demo of the things we could do.")]
-    public Vector2 killPosition;
+    public Vector3 killPosition;
 
     public Animator ScreenAnimator;
 
@@ -83,40 +83,23 @@ public class CharacterGate : MonoBehaviour
         collision.attachedRigidbody.AddForce(collision.attachedRigidbody.velocity.normalized * -launchForce, ForceMode2D.Impulse);
     }
 
-    // Will need editing to work with new controller...
-    // Should be avoided for now.
     private void LaunchGateAction(Collider2D collision)
     {
         var player = collision.gameObject.GetComponent<CharacterController>();
         if (player != null)
         {
-            player.JumpThroughFire();
+            player.JumpThroughFire(killPosition);
         }
     }
 
-
-    // This one feels the worst right now but we can easily add whatever we want here.
-    // Simply just moves the character to the given position for now.
     private void KillGateAction(Collider2D collision)
     {
-<<<<<<< HEAD
         var player = collision.gameObject.GetComponent<CharacterController>();
         if (player != null)
         {
             m_CinemachineImpulseSource.GenerateImpulse();
             ScreenAnimator.SetTrigger("FlashRed");
-            player.Kill();
+            player.Kill(killPosition);
         }
-=======
-        m_CinemachineImpulseSource.GenerateImpulse();
-        collision.attachedRigidbody.velocity = Vector2.zero;
-        if(ScreenAnimator)
-            ScreenAnimator.SetTrigger("FlashRed");
-
-        collision.attachedRigidbody.Sleep();
-        collision.gameObject.transform.position = killPosition;
-        collision.attachedRigidbody.WakeUp();
-        
->>>>>>> origin
     }
 }

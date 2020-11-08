@@ -42,7 +42,7 @@ public class CharacterController : KinematicObject
     Animator animator;
     Interactable interactable;
 
-    public void JumpThroughFire()
+    public void JumpThroughFire(Vector3 checkpointPosition)
     {
         if (allowJumpThrouhHoops)
         {
@@ -50,11 +50,11 @@ public class CharacterController : KinematicObject
         }
         else
         {
-            Kill();
+            Kill(checkpointPosition);
         }
     }
 
-    public void Kill()
+    public void Kill(Vector3 checkpointPosition)
     {
         Teleport(checkpointPosition);
         isDead = true;
@@ -95,6 +95,12 @@ public class CharacterController : KinematicObject
 
     protected override void Update()
     {
+        if (Input.GetButtonDown("Swap/Throw"))
+        {
+            isHeld = allowFly;
+            isActive = !isActive;
+            ActivateCharacter();
+        }
         if (isDead)
         {
             deadTimer += Time.deltaTime;
@@ -109,12 +115,6 @@ public class CharacterController : KinematicObject
                 targetVelocity = new Vector2(0, -10);
                 return;
             }
-        }
-        if (Input.GetButtonDown("Swap/Throw"))
-        {
-            isHeld = allowFly;
-            isActive = !isActive;
-            ActivateCharacter();
         }
         if (isActive)
         {
@@ -188,6 +188,11 @@ public class CharacterController : KinematicObject
             move.x = 0;
         }
         base.Update();
+    }
+
+    protected override bool CanDestroyGround()
+    {
+        return isIce && velocity.y < -10;
     }
 
     protected override void ComputeVelocity()
