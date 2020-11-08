@@ -86,9 +86,10 @@ public class CharacterGate : MonoBehaviour
     // Simply just moves the character to the given position for now.
     private void KillGateAction(Collider2D collision)
     {
-        collision.attachedRigidbody.Sleep();
-        collision.gameObject.transform.position = killPosition;
-        collision.attachedRigidbody.WakeUp();
-        collision.attachedRigidbody.velocity = Vector2.zero;
+        var player = collision.gameObject.GetComponent<CharacterController>();
+        if (player != null)
+        {
+            player.Kill();
+        }
     }
 }

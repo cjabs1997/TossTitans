@@ -129,7 +129,6 @@ public class KinematicObject : MonoBehaviour
 
 
         TestGrounded();
-        Debug.Log(IsGrounded);
         
         if(IsGrounded)
         {
@@ -237,7 +236,6 @@ public class KinematicObject : MonoBehaviour
             }
         }
         body.position = body.position + move.normalized * distance;
-                Debug.Log(move.normalized * distance);
     }
 
 }

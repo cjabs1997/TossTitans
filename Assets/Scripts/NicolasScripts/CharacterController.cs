@@ -18,23 +18,39 @@ public class CharacterController : KinematicObject
     public float dashSpeed = 25;
     public float dashLength = 0.5f;
     public float dashCooldown = 5f;
+    public Vector3 checkpointPosition;
     public GameObject ally;
     public GameObject highlightParticle;
     public LayerMask whatisPlayer;
     public CinemachineVirtualCamera followCam;
 
-    public float dashTimer = 1000000;
+    float dashTimer = 1000000;
     bool hasDoubleJump;
     bool dash;
-    public Vector2 dashDirection;
+    Vector2 dashDirection;
     bool jump;
     bool thrown;
     bool isHeld;
     bool isIce;
+    bool isDead;
+    float deadTimer;
+    float deadTimeCooldown = 0.2f;
     Vector2 move;
     SpriteRenderer spriteRenderer; 
     Animator animator;
     Interactable interactable;
+
+    public void Kill()
+    {
+        Teleport(checkpointPosition);
+        isDead = true;
+        deadTimer = 0;
+        isHeld = false;
+        isIce = false;
+        dash = false;
+        hasDoubleJump = false;
+        jump = false;
+    }
 
     protected override void Start()
     {
@@ -65,6 +81,21 @@ public class CharacterController : KinematicObject
 
     protected override void Update()
     {
+        if (isDead)
+        {
+            deadTimer += Time.deltaTime;
+            if (deadTimer > deadTimeCooldown)
+            {
+                isDead = false;
+            }
+            else
+            {
+                move = Vector2.zero;
+                velocity = new Vector2(0, -10);
+                targetVelocity = new Vector2(0, -10);
+                return;
+            }
+        }
         if (Input.GetButtonDown("Swap/Throw"))
         {
             isHeld = allowFly;
@@ -182,8 +213,6 @@ public class CharacterController : KinematicObject
                 velocity = dashDirection * dashSpeed;
                 targetVelocity = dashDirection * dashSpeed;
             }
-
-
         }
         if (jump)
         {
