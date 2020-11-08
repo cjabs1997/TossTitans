@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,8 @@ public class CharacterGate : MonoBehaviour
         "demo of the things we could do.")]
     public Vector2 killPosition;
 
+    public Animator ScreenAnimator;
+
 
     // This should probably be moved to a ScriptableObject in the future if these are something we are going to frequently use.
     public enum Type
@@ -37,10 +40,12 @@ public class CharacterGate : MonoBehaviour
     }
 
     private Interactable m_Interactable;
+    private CinemachineImpulseSource m_CinemachineImpulseSource;
 
     private void Awake()
     {
         m_Interactable = this.GetComponent<Interactable>();
+        m_CinemachineImpulseSource = this.GetComponent<CinemachineImpulseSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -92,8 +97,8 @@ public class CharacterGate : MonoBehaviour
         var player = collision.gameObject.GetComponent<CharacterController>();
         if (player != null)
         {
-            //m_CinemachineImpulseSource.GenerateImpulse();
-            //ScreenAnimator.SetTrigger("FlashRed");
+            m_CinemachineImpulseSource.GenerateImpulse();
+            ScreenAnimator.SetTrigger("FlashRed");
             player.Kill();
         }
     }
