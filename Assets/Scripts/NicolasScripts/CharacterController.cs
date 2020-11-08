@@ -18,6 +18,7 @@ public class CharacterController : KinematicObject
     public float dashSpeed = 25;
     public float dashLength = 0.5f;
     public float dashCooldown = 5f;
+    public float fireHoopSpeed = 40;
     public Vector3 checkpointPosition;
     public GameObject ally;
     public GameObject highlightParticle;
@@ -33,12 +34,25 @@ public class CharacterController : KinematicObject
     bool isHeld;
     bool isIce;
     bool isDead;
+    bool isInsideHoop;
     float deadTimer;
     float deadTimeCooldown = 0.2f;
     Vector2 move;
     SpriteRenderer spriteRenderer; 
     Animator animator;
     Interactable interactable;
+
+    public void JumpThroughFire()
+    {
+        if (allowJumpThrouhHoops)
+        {
+            isInsideHoop = true;
+        }
+        else
+        {
+            Kill();
+        }
+    }
 
     public void Kill()
     {
@@ -177,8 +191,26 @@ public class CharacterController : KinematicObject
     }
 
     protected override void ComputeVelocity()
-    {
+    {   
         targetVelocity = Vector2.zero;
+        if(isInsideHoop)
+        {
+            dash = false;
+            velocity.y = fireHoopSpeed / 5;
+            targetVelocity.y = fireHoopSpeed / 5;
+            if(velocity.x >= 0)
+            {
+                velocity.x = fireHoopSpeed;
+                targetVelocity.x = fireHoopSpeed;
+            }
+            if(velocity.x < 0)
+            {
+                velocity.x = -fireHoopSpeed;
+                targetVelocity.x = -fireHoopSpeed;
+            }
+            isInsideHoop = false;
+            return;
+        }
         if (isIce)
         {
             velocity.x = 0;

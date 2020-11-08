@@ -77,8 +77,11 @@ public class CharacterGate : MonoBehaviour
 
     private void LaunchGateAction(Collider2D collision)
     {
-        float leftOrRight = Vector2.Dot(collision.attachedRigidbody.velocity.normalized, Vector2.right);
-        collision.attachedRigidbody.AddForce(new Vector2(forceDirection.normalized.x * leftOrRight, forceDirection.normalized.y) * launchForce, ForceMode2D.Impulse);
+        var player = collision.gameObject.GetComponent<CharacterController>();
+        if (player != null)
+        {
+            player.JumpThroughFire();
+        }
     }
 
 
@@ -89,6 +92,8 @@ public class CharacterGate : MonoBehaviour
         var player = collision.gameObject.GetComponent<CharacterController>();
         if (player != null)
         {
+            //m_CinemachineImpulseSource.GenerateImpulse();
+            //ScreenAnimator.SetTrigger("FlashRed");
             player.Kill();
         }
     }
