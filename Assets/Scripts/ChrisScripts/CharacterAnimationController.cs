@@ -41,8 +41,8 @@ public class CharacterAnimationController : MonoBehaviour
     private void IceAnimHandler()
     {
         // This isn't super generic, will need to retool this a little bit most likely
-        if (m_CharacterController.isActive && Input.GetButtonDown("Ice Transform") && m_CharacterController.allowIceTransform)
-        {
+  //      if (m_CharacterController.isActive && Input.GetButtonDown("Ice Transform") && m_CharacterController.allowIceTransform)
+     //   {
             // If we are currently an ice block we want to return to normal
             if (m_CharacterController.GetIsIce())
             {
@@ -55,7 +55,7 @@ public class CharacterAnimationController : MonoBehaviour
                 m_Animator.SetBool("IceBlock", false);
                 m_Interactable.ResetState();
             }
-        }
+   //     }
     }
 
     /// <summary>
@@ -102,7 +102,6 @@ public class CharacterAnimationController : MonoBehaviour
             ((m_CharacterController.IsGrounded && Input.GetButtonDown("Jump") && !m_CharacterController.GetIsIce()) ||
             m_CharacterController.allowDoubleJump && m_CharacterController.GetHasDoubleJump() && Input.GetButtonDown("Jump") && !m_CharacterController.GetIsIce()))
         {
-            Debug.Log("JUMP");
             m_Animator.SetTrigger("Jump");
         }
 

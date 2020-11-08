@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -26,7 +27,7 @@ public class CharacterGate : MonoBehaviour
 
     [Tooltip("Where the object gets moved if the gate 'kills' them, used in KillGates. We can change the interaction here to do what we want but this is just a simple " +
         "demo of the things we could do.")]
-    public Vector2 killPosition;
+    public Vector3 killPosition;
 
     public Animator ScreenAnimator;
 
@@ -82,27 +83,23 @@ public class CharacterGate : MonoBehaviour
         collision.attachedRigidbody.AddForce(collision.attachedRigidbody.velocity.normalized * -launchForce, ForceMode2D.Impulse);
     }
 
-    // Will need editing to work with new controller...
-    // Should be avoided for now.
     private void LaunchGateAction(Collider2D collision)
     {
-        float leftOrRight = Vector2.Dot(collision.attachedRigidbody.velocity.normalized, Vector2.right);
-        collision.attachedRigidbody.AddForce(new Vector2(forceDirection.normalized.x * leftOrRight, forceDirection.normalized.y) * launchForce, ForceMode2D.Impulse);
+        var player = collision.gameObject.GetComponent<CharacterController>();
+        if (player != null)
+        {
+            player.JumpThroughFire(killPosition);
+        }
     }
 
-
-    // This one feels the worst right now but we can easily add whatever we want here.
-    // Simply just moves the character to the given position for now.
     private void KillGateAction(Collider2D collision)
     {
-        m_CinemachineImpulseSource.GenerateImpulse();
-        collision.attachedRigidbody.velocity = Vector2.zero;
-        if(ScreenAnimator)
+        var player = collision.gameObject.GetComponent<CharacterController>();
+        if (player != null)
+        {
+            m_CinemachineImpulseSource.GenerateImpulse();
             ScreenAnimator.SetTrigger("FlashRed");
-
-        collision.attachedRigidbody.Sleep();
-        collision.gameObject.transform.position = killPosition;
-        collision.attachedRigidbody.WakeUp();
-        
+            player.Kill(killPosition);
+        }
     }
 }
