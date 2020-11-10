@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// Most of the stuff here is just a quick demo of some simple interactions and how the tools can be used.
@@ -25,7 +27,9 @@ public class CharacterGate : MonoBehaviour
 
     [Tooltip("Where the object gets moved if the gate 'kills' them, used in KillGates. We can change the interaction here to do what we want but this is just a simple " +
         "demo of the things we could do.")]
-    public Vector2 killPosition;
+    public Vector3 killPosition;
+
+    public Animator ScreenAnimator;
 
 
     // This should probably be moved to a ScriptableObject in the future if these are something we are going to frequently use.
@@ -37,10 +41,12 @@ public class CharacterGate : MonoBehaviour
     }
 
     private Interactable m_Interactable;
+    private CinemachineImpulseSource m_CinemachineImpulseSource;
 
     private void Awake()
     {
         m_Interactable = this.GetComponent<Interactable>();
+        m_CinemachineImpulseSource = this.GetComponent<CinemachineImpulseSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,6 +76,8 @@ public class CharacterGate : MonoBehaviour
         }
     }
 
+    // Will need editing to work with new controller...
+    // Should be avoided for now.
     private void BlockGateAction(Collider2D collision)
     {
         collision.attachedRigidbody.AddForce(collision.attachedRigidbody.velocity.normalized * -launchForce, ForceMode2D.Impulse);
@@ -77,18 +85,21 @@ public class CharacterGate : MonoBehaviour
 
     private void LaunchGateAction(Collider2D collision)
     {
-        float leftOrRight = Vector2.Dot(collision.attachedRigidbody.velocity.normalized, Vector2.right);
-        collision.attachedRigidbody.AddForce(new Vector2(forceDirection.normalized.x * leftOrRight, forceDirection.normalized.y) * launchForce, ForceMode2D.Impulse);
+        var player = collision.gameObject.GetComponent<CharacterController>();
+        if (player != null)
+        {
+            player.JumpThroughFire(killPosition);
+        }
     }
 
-
-    // This one feels the worst right now but we can easily add whatever we want here.
-    // Simply just moves the character to the given position for now.
     private void KillGateAction(Collider2D collision)
     {
-        collision.attachedRigidbody.Sleep();
-        collision.gameObject.transform.position = killPosition;
-        collision.attachedRigidbody.WakeUp();
-        collision.attachedRigidbody.velocity = Vector2.zero;
+        var player = collision.gameObject.GetComponent<CharacterController>();
+        if (player != null)
+        {
+            m_CinemachineImpulseSource.GenerateImpulse();
+            ScreenAnimator.SetTrigger("FlashRed");
+            player.Kill(killPosition);
+        }
     }
 }
