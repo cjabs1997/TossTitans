@@ -1,0 +1,1618 @@
+fileFormatVersion: 2
+guid: e92ce0e1435b6ee448be94b052f1b584
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1657661659135070619
+    second: circus props_0
+  - first:
+      213: -4907609000638016516
+    second: circus props_1
+  - first:
+      213: -8310473078923942740
+    second: circus props_2
+  - first:
+      213: -675927188920875421
+    second: circus props_3
+  - first:
+      213: 81651229425728132
+    second: circus props_4
+  - first:
+      213: -3732623794632305979
+    second: circus props_5
+  - first:
+      213: -1917817323520005987
+    second: circus props_6
+  - first:
+      213: -6589029092460627149
+    second: circus props_7
+  - first:
+      213: -5812607288077060801
+    second: circus props_8
+  - first:
+      213: -3559186190065978535
+    second: circus props_9
+  - first:
+      213: -4849820433244073352
+    second: circus props_10
+  - first:
+      213: 7298828048671721558
+    second: circus props_11
+  - first:
+      213: -4588934464865361627
+    second: circus props_12
+  - first:
+      213: 7932300345023428191
+    second: circus props_13
+  - first:
+      213: 4290129232596131773
+    second: circus props_14
+  - first:
+      213: 2655218420795716067
+    second: circus props_15
+  - first:
+      213: -9006690148557803440
+    second: circus props_16
+  - first:
+      213: 2039431006048234058
+    second: circus props_17
+  - first:
+      213: -4116295439263342277
+    second: circus props_18
+  - first:
+      213: 4910519975660899678
+    second: circus props_19
+  - first:
+      213: -4321697149032189100
+    second: circus props_20
+  - first:
+      213: 2458607067588577008
+    second: circus props_21
+  - first:
+      213: 6594064351972802612
+    second: circus props_22
+  - first:
+      213: -1419718870454942443
+    second: circus props_23
+  - first:
+      213: 1565036125581495325
+    second: circus props_24
+  - first:
+      213: -2647932029781298018
+    second: circus props_25
+  - first:
+      213: -2074271161832005683
+    second: circus props_26
+  - first:
+      213: 2083797944204614427
+    second: circus props_27
+  - first:
+      213: 927901788420571906
+    second: circus props_28
+  - first:
+      213: -1728670537017734651
+    second: circus props_29
+  - first:
+      213: -2528648854863487265
+    second: circus props_30
+  - first:
+      213: 1504830554565475371
+    second: circus props_31
+  - first:
+      213: -5483707653379919252
+    second: circus props_32
+  - first:
+      213: 2906916974071947730
+    second: circus props_33
+  - first:
+      213: 2268712318132926816
+    second: circus props_34
+  - first:
+      213: 2725211880071019559
+    second: circus props_35
+  - first:
+      213: -1512331165757152959
+    second: circus props_36
+  - first:
+      213: -6849165386495658409
+    second: circus props_37
+  - first:
+      213: -786091094267510702
+    second: circus props_38
+  - first:
+      213: 7375108539984572
+    second: circus props_39
+  - first:
+      213: 8438441131193687990
+    second: circus props_40
+  - first:
+      213: -3778834558902676025
+    second: circus props_41
+  - first:
+      213: -3388457192959769072
+    second: circus props_42
+  - first:
+      213: 631007896735305387
+    second: circus props_43
+  - first:
+      213: 6786633609901616316
+    second: circus props_44
+  - first:
+      213: -6148164800055462479
+    second: circus props_45
+  - first:
+      213: 2460216228720647577
+    second: circus props_46
+  - first:
+      213: -339150081597523793
+    second: circus props_47
+  - first:
+      213: 6090772861659465843
+    second: circus props_48
+  - first:
+      213: 2781011233907101719
+    second: circus props_49
+  - first:
+      213: 684334772720856128
+    second: circus props_50
+  - first:
+      213: -8164627765322581439
+    second: circus props_51
+  - first:
+      213: 498920686446886422
+    second: circus props_52
+  - first:
+      213: 6251959738880421164
+    second: circus props_53
+  - first:
+      213: -6727952219161427989
+    second: circus props_54
+  - first:
+      213: 2100970700318871247
+    second: circus props_55
+  - first:
+      213: 1577608599054182113
+    second: circus props_56
+  - first:
+      213: -5893523909865613264
+    second: circus props_57
+  - first:
+      213: 225947999110496862
+    second: circus props_58
+  - first:
+      213: 985444477673534834
+    second: circus props_59
+  - first:
+      213: 8848042348780469980
+    second: circus props_60
+  - first:
+      213: 7797865559972147377
+    second: circus props_61
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: circus props_0
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 211
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e2871f08dcef8e0800000000000000
+      internalID: -1657661659135070619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_1
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 211
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf316749d9ba4ebb0800000000000000
+      internalID: -4907609000638016516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_2
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 211
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4aa47f3c44bac80800000000000000
+      internalID: -8310473078923942740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_3
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 211
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366c75a8dcf9e96f0800000000000000
+      internalID: -675927188920875421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_4
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 211
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48af46d4c55122100800000000000000
+      internalID: 81651229425728132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_5
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 211
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c255c06f6e033cc0800000000000000
+      internalID: -3732623794632305979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_6
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 195
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d98ef772e4b8265e0800000000000000
+      internalID: -1917817323520005987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_7
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 195
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b7b2953f01f84a0800000000000000
+      internalID: -6589029092460627149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_8
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35f15fc778755fa0800000000000000
+      internalID: -5812607288077060801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_9
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95334ab740b3b9ec0800000000000000
+      internalID: -3559186190065978535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_10
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8725e0ce20af1bcb0800000000000000
+      internalID: -4849820433244073352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 194
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6584cbd7075aa4560800000000000000
+      internalID: 7298828048671721558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_12
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 521272cda64d050c0800000000000000
+      internalID: -4588934464865361627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_13
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5674dcf221351e60800000000000000
+      internalID: 7932300345023428191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_14
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf59659ec9998b30800000000000000
+      internalID: 4290129232596131773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_15
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e13a94f51b39d420800000000000000
+      internalID: 2655218420795716067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_16
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 194
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 050b335870fc10380800000000000000
+      internalID: -9006690148557803440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_17
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 187
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a2c63d1b38d4c10800000000000000
+      internalID: 2039431006048234058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_18
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 187
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31e5286b1bffd6c0800000000000000
+      internalID: -4116295439263342277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_19
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5d4abb96eba52440800000000000000
+      internalID: 4910519975660899678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_20
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4533e1d175f3604c0800000000000000
+      internalID: -4321697149032189100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_21
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f6c1e90a1abe1220800000000000000
+      internalID: 2458607067588577008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_22
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 430c76d5792d28b50800000000000000
+      internalID: 6594064351972802612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_23
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5154d9595352c4ce0800000000000000
+      internalID: -1419718870454942443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_24
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c40f5701028b510800000000000000
+      internalID: 1565036125581495325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_25
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 168
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94b18729d7a04bd0800000000000000
+      internalID: -2647932029781298018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_26
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 93
+        width: 100
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf9a274e55b633e0800000000000000
+      internalID: -2074271161832005683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_27
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 156
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b510890332bec10800000000000000
+      internalID: 2083797944204614427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_28
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2030245a2c190ec00800000000000000
+      internalID: 927901788420571906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_29
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 148
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50acf533e478208e0800000000000000
+      internalID: -1728670537017734651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_30
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 149
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fded92c834f68ecd0800000000000000
+      internalID: -2528648854863487265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_31
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 149
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2c770c9a6b32e410800000000000000
+      internalID: 1504830554565475371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_32
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 149
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c62f23471f4f5e3b0800000000000000
+      internalID: -5483707653379919252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_33
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 149
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d1ac1f1691775820800000000000000
+      internalID: 2906916974071947730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_34
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 149
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069bddb45d51c7f10800000000000000
+      internalID: 2268712318132926816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_35
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 149
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72cbe4124c5e1d520800000000000000
+      internalID: 2725211880071019559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_36
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 155
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 141ea4241de130be0800000000000000
+      internalID: -1512331165757152959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_37
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 148
+        width: 16
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75676029e50e2f0a0800000000000000
+      internalID: -6849165386495658409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_38
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 84
+        width: 32
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250461d805e3715f0800000000000000
+      internalID: -786091094267510702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_39
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 84
+        width: 32
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbaa4b44f933a1000800000000000000
+      internalID: 7375108539984572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_40
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf58d2008d5b1570800000000000000
+      internalID: 8438441131193687990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_41
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c5d2a36df1ee8bc0800000000000000
+      internalID: -3778834558902676025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_42
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0160405c228c9f0d0800000000000000
+      internalID: -3388457192959769072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_43
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baecf5fb65ac1c800800000000000000
+      internalID: 631007896735305387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_44
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbca9e2af47fe2e50800000000000000
+      internalID: 6786633609901616316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_45
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5322050b45daaa0800000000000000
+      internalID: -6148164800055462479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_46
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 44
+        width: 103
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d9b8f00a1742220800000000000000
+      internalID: 2460216228720647577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_47
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 84
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8b5d43cc81b4bf0800000000000000
+      internalID: -339150081597523793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_48
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 68
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3784dcab5a5c68450800000000000000
+      internalID: 6090772861659465843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_49
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 68
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71057699bf2289620800000000000000
+      internalID: 2781011233907101719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_50
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 52
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04c697b99de3f7900800000000000000
+      internalID: 684334772720856128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_51
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 54
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14af7a43e4a61be80800000000000000
+      internalID: -8164627765322581439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_52
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 54
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61eb2ce88b58ce600800000000000000
+      internalID: 498920686446886422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_53
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 54
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2de20a124c63c650800000000000000
+      internalID: 6251959738880421164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_54
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 54
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beff4175a1381a2a0800000000000000
+      internalID: -6727952219161427989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_55
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 53
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce820478b5282d10800000000000000
+      internalID: 2100970700318871247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_56
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 30
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e6e93d89aac4e510800000000000000
+      internalID: 1577608599054182113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_57
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 36
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 038503daa3ff53ea0800000000000000
+      internalID: -5893523909865613264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_58
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 28
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5201b0128ab22300800000000000000
+      internalID: 225947999110496862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_59
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 28
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 275f99508800dad00800000000000000
+      internalID: 985444477673534834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_60
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 28
+        width: 49
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde3ca423af8aca70800000000000000
+      internalID: 8848042348780469980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circus props_61
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b074647965973c60800000000000000
+      internalID: 7797865559972147377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
