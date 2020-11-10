@@ -18,23 +18,53 @@ public class CharacterController : KinematicObject
     public float dashSpeed = 25;
     public float dashLength = 0.5f;
     public float dashCooldown = 5f;
+    public float fireHoopSpeed = 40;
+    public Vector3 checkpointPosition;
     public GameObject ally;
     public GameObject highlightParticle;
     public LayerMask whatisPlayer;
     public CinemachineVirtualCamera followCam;
 
-    public float dashTimer = 1000000;
+    float dashTimer = 1000000;
     bool hasDoubleJump;
     bool dash;
-    public Vector2 dashDirection;
+    Vector2 dashDirection;
     bool jump;
     bool thrown;
     bool isHeld;
     bool isIce;
+    bool isDead;
+    bool isInsideHoop;
+    float deadTimer;
+    float deadTimeCooldown = 0.2f;
     Vector2 move;
     SpriteRenderer spriteRenderer; 
     Animator animator;
     Interactable interactable;
+
+    public void JumpThroughFire(Vector3 checkpointPosition)
+    {
+        if (allowJumpThrouhHoops)
+        {
+            isInsideHoop = true;
+        }
+        else
+        {
+            Kill(checkpointPosition);
+        }
+    }
+
+    public void Kill(Vector3 checkpointPosition)
+    {
+        Teleport(checkpointPosition);
+        isDead = true;
+        deadTimer = 0;
+        isHeld = false;
+        isIce = false;
+        dash = false;
+        hasDoubleJump = false;
+        jump = false;
+    }
 
     protected override void Start()
     {
@@ -70,6 +100,21 @@ public class CharacterController : KinematicObject
             isHeld = allowFly;
             isActive = !isActive;
             ActivateCharacter();
+        }
+        if (isDead)
+        {
+            deadTimer += Time.deltaTime;
+            if (deadTimer > deadTimeCooldown)
+            {
+                isDead = false;
+            }
+            else
+            {
+                move = Vector2.zero;
+                velocity = new Vector2(0, -10);
+                targetVelocity = new Vector2(0, -10);
+                return;
+            }
         }
         if (isActive)
         {
@@ -145,9 +190,32 @@ public class CharacterController : KinematicObject
         base.Update();
     }
 
-    protected override void ComputeVelocity()
+    protected override bool CanDestroyGround()
     {
+        return isIce && velocity.y < -10;
+    }
+
+    protected override void ComputeVelocity()
+    {   
         targetVelocity = Vector2.zero;
+        if(isInsideHoop)
+        {
+            dash = false;
+            velocity.y = fireHoopSpeed / 5;
+            targetVelocity.y = fireHoopSpeed / 5;
+            if(velocity.x >= 0)
+            {
+                velocity.x = fireHoopSpeed;
+                targetVelocity.x = fireHoopSpeed;
+            }
+            if(velocity.x < 0)
+            {
+                velocity.x = -fireHoopSpeed;
+                targetVelocity.x = -fireHoopSpeed;
+            }
+            isInsideHoop = false;
+            return;
+        }
         if (isIce)
         {
             velocity.x = 0;
@@ -182,8 +250,6 @@ public class CharacterController : KinematicObject
                 velocity = dashDirection * dashSpeed;
                 targetVelocity = dashDirection * dashSpeed;
             }
-
-
         }
         if (jump)
         {
