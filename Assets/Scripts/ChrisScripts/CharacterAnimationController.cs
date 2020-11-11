@@ -31,6 +31,7 @@ public class CharacterAnimationController : MonoBehaviour
         InAirAnimHandler();
         JumpingAnimHandler();
         IceAnimHandler();
+        DashAnimHandler();
     }
 
     /// <summary>
@@ -40,22 +41,25 @@ public class CharacterAnimationController : MonoBehaviour
     /// </summary>
     private void IceAnimHandler()
     {
-        // This isn't super generic, will need to retool this a little bit most likely
-  //      if (m_CharacterController.isActive && Input.GetButtonDown("Ice Transform") && m_CharacterController.allowIceTransform)
-     //   {
-            // If we are currently an ice block we want to return to normal
-            if (m_CharacterController.GetIsIce())
-            {
+        // If we can't be ice ignore the things here
+        // Also prevents some warning messages :)
+        if (!m_CharacterController.allowIceTransform)
+            return;
+
+
+        // If we are an ice block turn into one
+        if (m_CharacterController.GetIsIce())
+        {
                 m_Animator.SetBool("IceBlock", true);
                 m_Interactable.SetState(abilityInteractionState);
-            }
-            // else we want to become an ice block
-            else
-            {
-                m_Animator.SetBool("IceBlock", false);
-                m_Interactable.ResetState();
-            }
-   //     }
+        }
+        // else we want to go back to normal
+        else
+        {
+            m_Animator.SetBool("IceBlock", false);
+            m_Interactable.ResetState();
+        }
+
     }
 
     /// <summary>
@@ -105,5 +109,13 @@ public class CharacterAnimationController : MonoBehaviour
             m_Animator.SetTrigger("Jump");
         }
 
+    }
+
+    private void DashAnimHandler()
+    {
+        if(!m_CharacterController.hasGrapplingHook && m_CharacterController.GetDash())
+        {
+            m_Animator.SetTrigger("Ability");
+        }
     }
 }

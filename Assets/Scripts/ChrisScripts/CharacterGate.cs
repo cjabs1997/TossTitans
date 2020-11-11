@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 /// <summary>
 /// Most of the stuff here is just a quick demo of some simple interactions and how the tools can be used.
