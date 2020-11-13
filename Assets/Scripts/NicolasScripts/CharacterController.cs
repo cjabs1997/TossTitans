@@ -23,6 +23,7 @@ public class CharacterController : KinematicObject
     public GameObject ally;
     public GameObject highlightParticle;
     public LayerMask whatisPlayer;
+    public LayerMask whatisGround;
     public CinemachineVirtualCamera followCam;
 
     float dashTimer = 1000000;
@@ -64,6 +65,11 @@ public class CharacterController : KinematicObject
         dash = false;
         hasDoubleJump = false;
         jump = false;
+        if (isIce)
+        {
+            isIce = false;
+            gravity /= 4;
+        }
     }
 
     protected override void Start()
@@ -228,13 +234,9 @@ public class CharacterController : KinematicObject
             {
                 Vector3 distance = ally.transform.position - transform.position + new Vector3(0, 0.5f, 0);
                 Vector2 direction =  (Vector2)Vector3.Normalize(distance);
-                var count = body.Cast(direction, contactFilter, hitBuffer, distance.magnitude);
-                bool hasSight = true;
-                for (var i = 0; i < count; i++)
-                {
-                    hasSight = false;
-                }
-                if (hasSight && distance.magnitude > 1)
+                var hasSight = Physics2D.Raycast((Vector2)(transform.position), direction, distance.magnitude, whatisGround.value).collider == null;
+
+                if (hasSight && distance.magnitude > 2)
                 {
                     velocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
                     targetVelocity = (Vector2)Vector3.Normalize(distance) * dashSpeed;
