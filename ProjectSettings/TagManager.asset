@@ -8,6 +8,8 @@ TagManager:
   - SwingPoint
   - PlatformGroup
   - Pickup
+  - Platform
+  - ThirdGoal
   layers:
   - Default
   - TransparentFX
@@ -48,8 +50,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: SemiBackground
+    uniqueID: 2140024777
+    locked: 0
   - name: Foreground
     uniqueID: 928160037
+    locked: 0
+  - name: PropsForeGround
+    uniqueID: 2649946619
     locked: 0
   - name: Player
     uniqueID: 3229834581
