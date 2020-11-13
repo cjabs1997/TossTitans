@@ -9,6 +9,7 @@ TagManager:
   - PlatformGroup
   - Pickup
   - Platform
+  - ThirdGoal
   layers:
   - Default
   - TransparentFX
