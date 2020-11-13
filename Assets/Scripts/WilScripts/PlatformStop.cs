@@ -12,9 +12,15 @@ public class PlatformStop : MonoBehaviour
     Rigidbody2D body;
     private bool activated = false;
 
+    //For Balloon platforms that are activated only
+    AudioSource audioData;
+    private bool soundPlayed = false;
+
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        audioData = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -26,8 +32,14 @@ public class PlatformStop : MonoBehaviour
 
         if (activated)
         {
-            timer += Time.deltaTime;
+            if (!soundPlayed)
+            {
+                audioData.Play();
+                soundPlayed = true;
+            }
 
+            timer += Time.deltaTime;
+            
             if (timer > movementDuration)
             {
                 body.velocity = Vector2.zero;
@@ -36,6 +48,7 @@ public class PlatformStop : MonoBehaviour
             {
                 body.velocity = startingVelocity;
             }
+
         }
     }
 }

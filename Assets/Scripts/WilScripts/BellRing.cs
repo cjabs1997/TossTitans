@@ -5,16 +5,11 @@ using UnityEngine;
 public class BellRing : MonoBehaviour
 {
     public bool isRung = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    AudioSource audioData;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        audioData = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,13 +18,14 @@ public class BellRing : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !isRung)
         {
             //Set isRung to true and play the bell sound here
-            Debug.Log("Ding!");
+            audioData.Play();
             isRung = true;
 
-            //Add this to a number of bells rung list in the gamecontroller?
-            //Could give this to a script inside the scale itself that checks those that have been rung by passing them all into it
+            //Sends message that scale listens for to denote bell has been rung
             GameObject scaleListener = GameObject.FindGameObjectWithTag("ThirdGoal");
             scaleListener.SendMessage("BellTriggered");
+
+
         }
     }
 }
