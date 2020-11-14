@@ -10,6 +10,7 @@ TagManager:
   - Pickup
   - Platform
   - ThirdGoal
+  - ExitPlatform
   layers:
   - Default
   - TransparentFX

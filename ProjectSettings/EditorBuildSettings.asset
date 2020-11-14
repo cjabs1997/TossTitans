@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WilScenes/WilScene1.unity
     guid: 2ba3f5daec2061a4ca4cda1b8bc5be05
+  - enabled: 1
+    path: Assets/Scenes/Level 4.unity
+    guid: dbe80a8bf0d51a34a8fa3c7ebf0580c7
+  - enabled: 1
+    path: Assets/Scenes/WilScenes/CreditsScene.unity
+    guid: 4467736752ba7b84b80399401d86eab3
   m_configObjects: {}
