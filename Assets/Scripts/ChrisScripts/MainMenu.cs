@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if(Input.anyKeyDown)
+        if(Input.anyKeyDown || Input.GetButtonDown("Jump"))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
         }
