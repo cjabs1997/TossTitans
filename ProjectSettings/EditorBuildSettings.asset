@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ChrisScenes/ChrisMainMenu.unity
+    guid: 2c9b2944415cb6d4a88f123b834944b2
+  - enabled: 1
     path: Assets/Scenes/WilScenes/InstructionsScene.unity
     guid: ca3e438b028978c4aaac7f44cb6b9e98
   - enabled: 1
