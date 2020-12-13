@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class ConstantPlatform : MonoBehaviour
 {
-    public Activator activator;
-
     public Vector3 startingVelocity;
     public float movementDuration;
     public float timer;
     bool direction;
     Rigidbody2D body;
-    private bool activated = false;
 
     void Start()
     {
@@ -21,30 +18,17 @@ public class ConstantPlatform : MonoBehaviour
 
     void Update()
     {
-        if (activator == null)
+        timer += direction ? Time.deltaTime : -Time.deltaTime;
+
+        if (timer > movementDuration)
         {
-            activated = true;
+            direction = false;
         }
-        else if (activator.isActive)
+        if (timer < 0)
         {
-            activated = true;
+            direction = true;
         }
 
-        if (activated)
-        {
-
-            timer += direction ? Time.deltaTime : -Time.deltaTime;
-
-            if (timer > movementDuration)
-            {
-                direction = false;
-            }
-            if (timer < 0)
-            {
-                direction = true;
-            }
-
-            body.velocity = direction ? startingVelocity : -startingVelocity;
-        }
+        body.velocity = direction ? startingVelocity : -startingVelocity;
     }
 }

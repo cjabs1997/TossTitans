@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterController : KinematicObject
 {
-    public bool allowDoubleJump ;
+    public bool allowDoubleJump;
     public bool allowDash;
     public bool hasGrapplingHook;
     public bool allowIceTransform;
@@ -68,7 +68,8 @@ public class CharacterController : KinematicObject
         if (isIce)
         {
             isIce = false;
-            gravity /= 4;
+            aerialControl *= 3;
+            groundControl *= 5;
         }
     }
 
@@ -80,7 +81,6 @@ public class CharacterController : KinematicObject
 
     bool CanBeThrown()
     {
-        GameObject throwablePlayer = null;
         Collider2D[] otherPlayer = Physics2D.OverlapCircleAll(transform.position, 2f, whatisPlayer);
         foreach (Collider2D throwable in otherPlayer)
         {
@@ -139,11 +139,11 @@ public class CharacterController : KinematicObject
 
             move.x = Input.GetAxis("Horizontal");
             move.y = Input.GetAxis("Vertical");
-            if (IsGrounded && Input.GetButtonDown("Jump") && !isIce)
+            if (IsGrounded && Input.GetButtonDown("Jump"))
             {
                 jump = true;
             }
-            else if (allowDoubleJump && hasDoubleJump && Input.GetButtonDown("Jump") && !isIce)
+            else if (allowDoubleJump && hasDoubleJump && Input.GetButtonDown("Jump"))
             {
                 jump = true;
                 hasDoubleJump = false;
@@ -180,12 +180,14 @@ public class CharacterController : KinematicObject
                 if (isIce)
                 {
                     isIce = false;
-                    gravity /= 4;
+                    aerialControl *= 3;
+                    groundControl *= 5;
                 }
                 else
                 {
                     isIce = true;
-                    gravity *= 4;
+                    aerialControl /= 3;
+                    groundControl /= 5;
                 }
             }
         }
@@ -220,12 +222,6 @@ public class CharacterController : KinematicObject
                 targetVelocity.x = -fireHoopSpeed;
             }
             isInsideHoop = false;
-            return;
-        }
-        if (isIce)
-        {
-            velocity.x = 0;
-            targetVelocity.x = 0;
             return;
         }
         if (dash)

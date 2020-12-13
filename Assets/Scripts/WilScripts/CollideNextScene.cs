@@ -5,10 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class CollideNextScene : MonoBehaviour
 {
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.CompareTag("Player"))
+        Collider2D[] collisions = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0);
+        int charactersCount = 0;
+        foreach (Collider2D collision in collisions)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                charactersCount++;
+            }
+        }
+        if (charactersCount == 2)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

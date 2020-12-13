@@ -148,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3565945541342795284}
-  - component: {fileID: 3565945541342795287}
+  - component: {fileID: 2496746840971975923}
   m_Layer: 0
   m_Name: Ferris Wheel
   m_TagString: Untagged
@@ -177,7 +177,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3565945541342795287
+--- !u!114 &2496746840971975923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,9 +186,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3565945541342795286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcdecafc5dc12e4aa46c45eb96dd946, type: 3}
+  m_Script: {fileID: 11500000, guid: 770d5819cffa38a4aba268e79f202444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCam: {fileID: 0}
   wheel: {fileID: 3565945542887280407}
   rotationspeed: 0.05
   carpoints:
