@@ -16,7 +16,7 @@ public class FerrisWheel : Triggerable
         if (activated)
         {
             timer += Time.deltaTime;
-            wheel.transform.Rotate(0, 0, Mathf.Min(timer, 2) * rotationspeed);
+            wheel.transform.Rotate(0, 0, Mathf.Min(timer, 2) * Time.deltaTime * rotationspeed);
             for(int i = 0; i < cars.Length; i++)
             {
                 cars[i].transform.position = carpoints[i].transform.position;

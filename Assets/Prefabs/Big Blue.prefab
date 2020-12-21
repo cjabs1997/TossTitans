@@ -174,7 +174,7 @@ MonoBehaviour:
   minGroundNormalY: 0.65
   gravity: 40
   groundControl: 100
-  aerialControl: 30
+  aerialControl: 25
   velocity: {x: 0, y: 0}
   allowDoubleJump: 1
   allowDash: 0

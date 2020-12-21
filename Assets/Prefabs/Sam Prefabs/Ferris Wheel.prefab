@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followCam: {fileID: 0}
   wheel: {fileID: 3565945542887280407}
-  rotationspeed: 0.05
+  rotationspeed: 20
   carpoints:
   - {fileID: 3565945542134308529}
   - {fileID: 3565945542314721149}
